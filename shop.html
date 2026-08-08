@@ -1,9 +1,265 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop — RIZELLE</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="shop.css"></head><body>
-<header><a href="index.html"><img src="assets/rizelle-logo.jpg"></a><nav id="nav"><a href="index.html">HOME</a><a class="active" href="shop.html">SHOP</a><a href="index.html#outlet">FACTORY OUTLET</a><a href="index.html#story">OUR STORY</a><a href="index.html#contact">CONTACT</a></nav><div class="actions"><a href="orders.html">ORDERS</a><button onclick="document.getElementById('search').focus()">⌕</button><a href="bag.html">BAG <b data-bag-count>0</b></a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header>
-<main class="shop"><div class="shopHero"><small>RIZELLE / COLLECTION 01</small><h1>Wear your <i>statement.</i></h1><p>Explore the latest RIZELLE pieces — designed with clean lines, quiet confidence and everyday versatility.</p></div>
-<div class="shopTools"><div class="categories"><button class="selected" data-cat="All">ALL</button><button data-cat="Women">WOMEN</button><button data-cat="Men">MEN</button><button data-cat="Kids">KIDS</button><button data-cat="Accessories">ACCESSORIES</button></div><div class="search"><input id="search" placeholder="Search products..."><select id="sort"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div></div>
-<div id="count" class="resultCount"></div><section id="products" class="productGrid"></section></main><div id="toast"></div><script src="products.js"></script><script>
-let cat='All', q=''; const grid=document.getElementById('products');
-function render(){let a=PRODUCTS.filter(p=>(cat==='All'||p.category===cat)&&p.name.toLowerCase().includes(q.toLowerCase()));let s=document.getElementById('sort').value;if(s==='low')a.sort((x,y)=>x.price-y.price);if(s==='high')a.sort((x,y)=>y.price-x.price);grid.innerHTML=a.length?a.map(card).join(''):'<div class="empty">No pieces found.<br><small>Try another search or category.</small></div>';document.getElementById('count').textContent=a.length+' PIECES'}
-document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-cat]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');cat=b.dataset.cat;render()});document.getElementById('search').oninput=e=>{q=e.target.value;render()};document.getElementById('sort').onchange=render;updateBagCount();render();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>RIZELLE — Shop</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="shop.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<header class="siteHeader">
+
+  <a
+    href="index.html"
+    class="brand"
+  >
+    RIZELLE
+  </a>
+
+
+  <nav>
+
+    <a href="index.html">
+      HOME
+    </a>
+
+    <a href="shop.html" class="active">
+      SHOP
+    </a>
+
+    <a href="orders.html">
+      ORDERS
+    </a>
+
+    <a href="bag.html">
+
+      BAG
+      (<span data-bag-count>0</span>)
+
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main class="shopPage">
+
+
+  <section class="shopHero">
+
+    <div>
+
+      <p class="eyebrow">
+        RIZELLE COLLECTION
+      </p>
+
+      <h1>
+        Shop
+      </h1>
+
+      <p class="shopIntro">
+        Everyday essentials,
+        refined for your style.
+      </p>
+
+    </div>
+
+
+    <div class="shopTools">
+
+      <button
+        class="filterBtn active"
+        data-filter="All"
+      >
+        ALL
+      </button>
+
+      <button
+        class="filterBtn"
+        data-filter="Men"
+      >
+        MEN
+      </button>
+
+      <button
+        class="filterBtn"
+        data-filter="Women"
+      >
+        WOMEN
+      </button>
+
+      <button
+        class="filterBtn"
+        data-filter="Kids"
+      >
+        KIDS
+      </button>
+
+      <button
+        class="filterBtn"
+        data-filter="Accessories"
+      >
+        ACCESSORIES
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <section>
+
+    <div
+      id="productGrid"
+      class="productGrid"
+    ></div>
+
+  </section>
+
+
+</main>
+
+
+
+<div id="toast"></div>
+
+
+
+<script src="products.js"></script>
+
+
+<script>
+
+
+  const grid =
+    document.getElementById(
+      'productGrid'
+    );
+
+
+  const filterButtons =
+    document.querySelectorAll(
+      '.filterBtn'
+    );
+
+
+  let currentFilter = 'All';
+
+
+
+  function renderProducts() {
+
+
+    const products =
+      currentFilter === 'All'
+
+        ? PRODUCTS
+
+        : PRODUCTS.filter(
+            p =>
+              p.category ===
+              currentFilter
+          );
+
+
+    if (!products.length) {
+
+      grid.innerHTML = `
+
+        <div class="noProducts">
+
+          <h2>
+            No products found
+          </h2>
+
+          <p>
+            Try another category.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    grid.innerHTML =
+      products
+        .map(card)
+        .join('');
+
+  }
+
+
+
+  filterButtons.forEach(button => {
+
+
+    button.addEventListener(
+      'click',
+      () => {
+
+
+        filterButtons.forEach(
+          btn =>
+            btn.classList.remove(
+              'active'
+            )
+        );
+
+
+        button.classList.add(
+          'active'
+        );
+
+
+        currentFilter =
+          button.dataset.filter;
+
+
+        renderProducts();
+
+      }
+    );
+
+  });
+
+
+
+  updateBagCount();
+
+  renderProducts();
+
+
+</script>
+
+
+</body>
+
+</html>
