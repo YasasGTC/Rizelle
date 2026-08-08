@@ -1,34 +1,953 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RIZELLE — Fashion That Never Fades</title><link rel="stylesheet" href="style.css"></head>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+
+>
+
+<title>RIZELLE — Fashion That Never Fades</title>
+
+<link
+  rel="stylesheet"
+  href="style.css"
+>
+
+<style>
+
+/* =========================================================
+   RIZELLE HOMEPAGE CREATIVE LAYER
+   ========================================================= */
+
+.hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.18)
+    ),
+    url("https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1800")
+    center/cover no-repeat !important;
+}
+
+.heroText {
+  max-width: 780px;
+}
+
+.heroText h1 {
+  text-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+
+
+/* COLLECTION */
+
+.collection {
+  background: #f3f1ec;
+}
+
+.collection .grid article {
+  background-size: cover !important;
+  background-position: center !important;
+  transition:
+    transform .5s ease,
+    background-position .5s ease;
+}
+
+.collection .grid article:hover {
+  transform: translateY(-8px);
+}
+
+.cardOne {
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.05)
+    ),
+    url("https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200")
+    center/cover no-repeat !important;
+}
+
+.cardTwo {
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.70),
+      rgba(0,0,0,.04)
+    ),
+    url("https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1200")
+    center/cover no-repeat !important;
+}
+
+.cardThree {
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.75),
+      rgba(0,0,0,.05)
+    ),
+    url("https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1200")
+    center/cover no-repeat !important;
+}
+
+.collectionCard {
+  position: relative;
+}
+
+.collectionCard a {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #fff;
+}
+
+.collectionCard > a > div:last-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+/* LOOKBOOK */
+
+.lookbook {
+  min-height: 700px;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  background: #111;
+  color: #fff;
+}
+
+.lookbookImage {
+  min-height: 700px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.02),
+      rgba(0,0,0,.42)
+    ),
+    url("https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1600")
+    center/cover no-repeat;
+}
+
+.lookbookText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 9%;
+}
+
+.lookbookText small {
+  color: #888;
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+.lookbookText h2 {
+  font:
+    500 clamp(50px,6vw,88px)/.92
+    'Playfair Display',
+    serif;
+
+  letter-spacing: -3px;
+  margin: 20px 0;
+}
+
+.lookbookText p {
+  max-width: 420px;
+  color: #aaa;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.btn.dark {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+  align-self: flex-start;
+}
+
+.btn.dark:hover {
+  background: transparent;
+  color: #fff;
+}
+
+
+/* OUTLET IMAGE */
+
+.outlet .visual {
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.28),
+      rgba(0,0,0,.65)
+    ),
+    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1200")
+    center/cover no-repeat;
+}
+
+.outlet .visual strong {
+  color: rgba(255,255,255,.7);
+}
+
+
+/* STORY */
+
+.story {
+  background: #fff;
+}
+
+
+/* BRAND STATEMENT */
+
+.brandImage {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+
+  padding: 100px 9%;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.82),
+      rgba(0,0,0,.12)
+    ),
+    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1800")
+    center/cover no-repeat;
+}
+
+.brandImage small {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #aaa;
+}
+
+.brandImage h2 {
+  font:
+    500 clamp(52px,7vw,100px)/.9
+    'Playfair Display',
+    serif;
+
+  letter-spacing: -4px;
+  margin: 22px 0 30px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px) {
+
+  .lookbook {
+    grid-template-columns: 1fr;
+  }
+
+  .lookbookImage {
+    min-height: 560px;
+  }
+
+  .lookbookText {
+    min-height: 500px;
+    padding: 80px 8%;
+  }
+
+  .brandImage {
+    min-height: 600px;
+    padding: 80px 7%;
+  }
+
+}
+
+
+@media(max-width:520px) {
+
+  .hero {
+    background-position: 62% center !important;
+  }
+
+  .lookbookImage {
+    min-height: 470px;
+  }
+
+  .lookbookText {
+    padding: 70px 7%;
+  }
+
+  .brandImage {
+    min-height: 540px;
+  }
+
+  .brandImage h2 {
+    letter-spacing: -2px;
+  }
+
+}
+
+</style>
+
+</head>
+
 <body>
-<header><a href="#home"><img src="assets/rizelle-logo.jpg"></a>
-<nav id="nav"><a href="#home">HOME</a><a href="shop.html">SHOP</a><a href="#outlet">FACTORY OUTLET</a><a href="#story">OUR STORY</a><a href="#contact">CONTACT</a></nav>
-<div class="actions"><button onclick="location.href='shop.html'">⌕</button><a href="bag.html">BAG <b data-bag-count>0</b></a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header>
 
-<section class="hero" id="home"><div class="shade"></div><div class="heroText">
-<small>RIZELLE / NEW ERA</small><h1>FASHION<br><i>THAT NEVER</i><br>FADES.</h1>
-<p>Timeless silhouettes. Modern confidence. A new expression of everyday fashion.</p>
-<div><a class="btn light" href="#collection">SHOP COLLECTION ↗</a><a class="btn outline" href="#outlet">VISIT FACTORY OUTLET ↗</a></div></div>
-<footer class="heroFoot"><span>EST. RIZELLE</span><span>SCROLL TO DISCOVER ↓</span><span>01 / 04</span></footer></section>
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
-<section class="intro"><small>THE RIZELLE STANDARD</small><h2>Style should feel<br><i>effortless.</i></h2>
-<p>RIZELLE brings together clean design, confident details and timeless fashion — created for people who want their style to speak without saying too much.</p></section>
+<header>
 
-<section class="collection" id="collection"><div class="head"><div><small>DISCOVER</small><h2>Latest Collection</h2></div><a href="#" href="shop.html">VIEW ALL ↗</a></div>
-<div class="grid"><article><span>R</span><div><b>01</b><h3>New Arrivals</h3><p>Discover the latest RIZELLE pieces.</p></div></article>
-<article><span>R</span><div><b>02</b><h3>Everyday Essentials</h3><p>Designed to become your favourites.</p></div></article>
-<article><span>R</span><div><b>03</b><h3>Signature Pieces</h3><p>Make an impression without trying.</p></div></article></div></section>
+<a href="#home">
 
-<section class="outlet" id="outlet"><div class="visual"><strong>R</strong><small>RIZELLE<br>FACTORY OUTLET</small></div>
-<div><small>SHOP IN STORE</small><h2>The Factory<br><i>Outlet.</i></h2><p>Discover selected RIZELLE collections at special outlet prices. Visit us and experience the brand in person.</p>
-<div class="meta"><span>LOCATION <b>Piliyandala, Colombo, Sri Lanka</b></span><span>OPENING HOURS <b>09:00 AM — 07:00 PM</b></span></div>
-<a class="btn light" href="https://www.google.com/maps/search/?api=1&query=Piliyandala%2C%20Colombo%2C%20Sri%20Lanka" target="_blank" rel="noopener">GET DIRECTIONS ↗</a></div></section>
+<img
+src="assets/rizelle-logo.jpg"
+alt="RIZELLE"
 
-<section class="story" id="story"><div><small>OUR PHILOSOPHY</small><h2>Less noise.<br><i>More style.</i></h2></div>
-<div><p>We believe fashion doesn't need to chase every trend. RIZELLE is about pieces that look right today, tomorrow and years from now.</p><a href="#" onclick="toast('About page will be added later.');return false">DISCOVER OUR STORY ↗</a></div></section>
+>
 
-<section class="cta" id="contact"><div style="margin-bottom:35px"><small>FACTORY & SHOP</small><p style="color:#aaa;font-size:12px;line-height:1.8">Piliyandala, Colombo, Sri Lanka<br>WhatsApp: 0760256550</p><a class="btn light" href="https://wa.me/94760256550?text=Hello%20RIZELLE%2C%20I%20need%20more%20details." target="_blank" rel="noopener">FOR MORE DETAILS ↗</a></div><small>WELCOME TO RIZELLE</small><h2>Wear your<br><i>statement.</i></h2><a class="btn light" href="#collection">SHOP RIZELLE ↗</a></section>
-<footer class="siteFoot"><img src="assets/rizelle-logo.jpg"><p>FASHION THAT NEVER FADES</p><div><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div><hr><small>© 2026 RIZELLE · ALL RIGHTS RESERVED</small></footer>
-<div id="toast"></div><script src="products.js"></script><script>updateBagCount();function toast(x){let t=document.getElementById('toast');t.textContent=x;t.className='show';setTimeout(()=>t.className='',2400)}</script>
-</body></html>
+</a>
+
+<nav id="nav">
+
+<a href="#home">
+HOME
+</a>
+
+<a href="shop.html">
+SHOP
+</a>
+
+<a href="#outlet">
+FACTORY OUTLET
+</a>
+
+<a href="#story">
+OUR STORY
+</a>
+
+<a href="#contact">
+CONTACT
+</a>
+
+</nav>
+
+<div class="actions">
+
+<button
+onclick="location.href='shop.html'"
+
+>
+
+⌕ </button>
+
+<a href="bag.html">
+
+BAG
+
+<b data-bag-count>
+0
+</b>
+
+</a>
+
+<button
+class="menu"
+onclick="
+document
+.getElementById('nav')
+.classList.toggle('open')
+"
+
+>
+
+☰ </button>
+
+</div>
+
+</header>
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+<div class="shade"></div>
+
+<div class="heroText">
+
+<small>
+RIZELLE / NEW ERA
+</small>
+
+<h1>
+
+FASHION<br>
+
+<i>THAT NEVER</i><br>
+
+FADES.
+
+</h1>
+
+<p>
+
+Timeless silhouettes.
+Modern confidence.
+A new expression of everyday fashion.
+
+</p>
+
+<div>
+
+<a
+class="btn light"
+href="#collection"
+
+>
+
+SHOP COLLECTION ↗ </a>
+
+<a
+class="btn outline"
+href="#outlet"
+
+>
+
+VISIT FACTORY OUTLET ↗ </a>
+
+</div>
+
+</div>
+
+<footer class="heroFoot">
+
+<span>
+EST. RIZELLE
+</span>
+
+<span>
+SCROLL TO DISCOVER ↓
+</span>
+
+<span>
+01 / 04
+</span>
+
+</footer>
+
+</section>
+
+<!-- =====================================================
+     INTRO
+     ===================================================== -->
+
+<section class="intro">
+
+<small>
+THE RIZELLE STANDARD
+</small>
+
+<h2>
+
+Style should feel<br>
+
+<i>effortless.</i>
+
+</h2>
+
+<p>
+
+RIZELLE brings together clean design,
+confident details and timeless fashion —
+created for people who want their style
+to speak without saying too much.
+
+</p>
+
+</section>
+
+<!-- =====================================================
+     COLLECTION
+     ===================================================== -->
+
+<section
+  class="collection"
+  id="collection"
+>
+
+<div class="head">
+
+<div>
+
+<small>
+DISCOVER
+</small>
+
+<h2>
+Latest Collection
+</h2>
+
+</div>
+
+<a href="shop.html">
+VIEW ALL ↗
+</a>
+
+</div>
+
+<div class="grid">
+
+<article
+  class="collectionCard cardOne"
+>
+
+<a href="shop.html">
+
+<div></div>
+
+<div>
+
+<b>
+01
+</b>
+
+<h3>
+New Arrivals
+</h3>
+
+<p>
+Discover the latest RIZELLE pieces.
+</p>
+
+</div>
+
+</a>
+
+</article>
+
+<article
+  class="collectionCard cardTwo"
+>
+
+<a href="shop.html">
+
+<div></div>
+
+<div>
+
+<b>
+02
+</b>
+
+<h3>
+Everyday Essentials
+</h3>
+
+<p>
+Designed to become your favourites.
+</p>
+
+</div>
+
+</a>
+
+</article>
+
+<article
+  class="collectionCard cardThree"
+>
+
+<a href="shop.html">
+
+<div></div>
+
+<div>
+
+<b>
+03
+</b>
+
+<h3>
+Signature Pieces
+</h3>
+
+<p>
+Make an impression without trying.
+</p>
+
+</div>
+
+</a>
+
+</article>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     LOOKBOOK
+     ===================================================== -->
+
+<section class="lookbook">
+
+<div class="lookbookImage"></div>
+
+<div class="lookbookText">
+
+<small>
+RIZELLE LOOKBOOK
+</small>
+
+<h2>
+
+Wear the<br>
+
+<i>attitude.</i>
+
+</h2>
+
+<p>
+
+Premium fashion meets everyday
+street energy. Explore silhouettes
+designed for confidence, movement
+and individuality.
+
+</p>
+
+<a
+class="btn dark"
+href="shop.html"
+
+>
+
+EXPLORE THE LOOKS ↗ </a>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     FACTORY OUTLET
+     ===================================================== -->
+
+<section
+  class="outlet"
+  id="outlet"
+>
+
+<div class="visual">
+
+<strong>
+R
+</strong>
+
+<small>
+
+RIZELLE<br>
+
+FACTORY OUTLET
+
+</small>
+
+</div>
+
+<div>
+
+<small>
+SHOP IN STORE
+</small>
+
+<h2>
+
+The Factory<br>
+
+<i>Outlet.</i>
+
+</h2>
+
+<p>
+
+Discover selected RIZELLE collections
+at special outlet prices. Visit us and
+experience the brand in person.
+
+</p>
+
+<div class="meta">
+
+<span>
+
+LOCATION
+
+<b>
+Piliyandala, Colombo, Sri Lanka
+</b>
+
+</span>
+
+<span>
+
+OPENING HOURS
+
+<b>
+09:00 AM — 07:00 PM
+</b>
+
+</span>
+
+</div>
+
+<a
+class="btn light"
+href="https://www.google.com/maps/search/?api=1&query=Piliyandala%2C%20Colombo%2C%20Sri%20Lanka"
+target="_blank"
+rel="noopener"
+
+>
+
+GET DIRECTIONS ↗ </a>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     STORY
+     ===================================================== -->
+
+<section
+  class="story"
+  id="story"
+>
+
+<div>
+
+<small>
+OUR PHILOSOPHY
+</small>
+
+<h2>
+
+Less noise.<br>
+
+<i>More style.</i>
+
+</h2>
+
+</div>
+
+<div>
+
+<p>
+
+We believe fashion doesn't need
+to chase every trend.
+
+RIZELLE is about pieces that look
+right today, tomorrow and years
+from now.
+
+</p>
+
+<a
+href="#"
+onclick="
+toast(
+'Our story page will be added later.'
+);
+return false;
+"
+
+>
+
+DISCOVER OUR STORY ↗ </a>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     BRAND IMAGE
+     ===================================================== -->
+
+<section class="brandImage">
+
+<div>
+
+<small>
+THE RIZELLE MOOD
+</small>
+
+<h2>
+
+Modern.<br>
+
+<i>Confident.</i><br>
+
+Unmistakable.
+
+</h2>
+
+<a
+class="btn light"
+href="shop.html"
+
+>
+
+SHOP THE COLLECTION ↗ </a>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     CONTACT CTA
+     ===================================================== -->
+
+<section
+  class="cta"
+  id="contact"
+>
+
+<div style="margin-bottom:35px">
+
+<small>
+FACTORY & SHOP
+</small>
+
+<p
+  style="
+    color:#aaa;
+    font-size:12px;
+    line-height:1.8;
+  "
+>
+
+Piliyandala, Colombo, Sri Lanka<br>
+
+WhatsApp: 0760256550
+
+</p>
+
+<a
+class="btn light"
+href="https://wa.me/94760256550?text=Hello%20RIZELLE%2C%20I%20need%20more%20details."
+target="_blank"
+rel="noopener"
+
+>
+
+FOR MORE DETAILS ↗ </a>
+
+</div>
+
+<small>
+WELCOME TO RIZELLE
+</small>
+
+<h2>
+
+Wear your<br>
+
+<i>statement.</i>
+
+</h2>
+
+<a
+class="btn light"
+href="shop.html"
+
+>
+
+SHOP RIZELLE ↗ </a>
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="siteFoot">
+
+<img
+src="assets/rizelle-logo.jpg"
+alt="RIZELLE"
+
+>
+
+<p>
+FASHION THAT NEVER FADES
+</p>
+
+<div>
+
+<a href="#">
+Instagram
+</a>
+
+<a href="#">
+Facebook
+</a>
+
+<a href="#">
+TikTok
+</a>
+
+</div>
+
+<hr>
+
+<small>
+© 2026 RIZELLE · ALL RIGHTS RESERVED
+</small>
+
+</footer>
+
+<div id="toast"></div>
+
+<script src="products.js"></script>
+
+<script>
+
+updateBagCount();
+
+
+function toast(message) {
+
+  const t =
+    document.getElementById("toast");
+
+  t.textContent = message;
+
+  t.className = "show";
+
+  setTimeout(
+    () => {
+      t.className = "";
+    },
+    2400
+  );
+
+}
+
+</script>
+
+</body>
+
+</html>
