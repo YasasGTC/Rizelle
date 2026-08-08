@@ -1,311 +1,650 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>RIZELLE — Your Bag</title>
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="bag.css">
+  <title>Bag — RIZELLE</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="shop.css"
+  >
+
+  <style>
+
+    .bagPage {
+      padding: 135px 6.5% 100px;
+      max-width: 1350px;
+      margin: auto;
+    }
+
+    .bagHero {
+      margin-bottom: 50px;
+    }
+
+    .bagHero small {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #888;
+    }
+
+    .bagHero h1 {
+      font: 500 clamp(48px,6vw,80px)/.95
+        'Playfair Display', serif;
+      letter-spacing: -3px;
+      margin: 18px 0 0;
+    }
+
+    .bagLayout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .bagList {
+      border-top: 1px solid #ddd;
+    }
+
+    .bagItem {
+      display: grid;
+      grid-template-columns: 130px 1fr auto auto auto;
+      gap: 22px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .bagThumb {
+      width: 130px;
+      aspect-ratio: 4 / 5;
+      background-size: cover;
+      background-position: center;
+      background-color: #eee;
+    }
+
+    .bagProduct small {
+      color: #999;
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .bagProduct h3 {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 8px 0;
+    }
+
+    .bagProduct p {
+      color: #777;
+      font-size: 11px;
+      margin: 0;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+    }
+
+    .qty button {
+      width: 34px;
+      height: 34px;
+      font-size: 16px;
+    }
+
+    .qty button:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .qty b {
+      width: 30px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .itemTotal {
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .removeItem {
+      width: 30px;
+      height: 30px;
+      color: #888;
+      font-size: 18px;
+    }
+
+    .removeItem:hover {
+      color: #111;
+    }
+
+    .summary {
+      border: 1px solid #ddd;
+      padding: 28px;
+      position: sticky;
+      top: 105px;
+    }
+
+    .summaryTitle {
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .summaryRow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .summaryRow span {
+      color: #777;
+    }
+
+    .summaryTotal {
+      display: flex;
+      justify-content: space-between;
+      padding: 22px 0;
+      font-size: 13px;
+    }
+
+    .checkoutBtn {
+      display: block;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 17px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      transition: .2s;
+    }
+
+    .checkoutBtn:hover {
+      background: #333;
+    }
+
+    .emptyBag {
+      text-align: center;
+      padding: 90px 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .emptyBag h2 {
+      font: 500 42px 'Playfair Display', serif;
+      margin: 0 0 15px;
+    }
+
+    .emptyBag p {
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    .emptyBtn {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      padding: 15px 22px;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    @media(max-width:950px) {
+
+      .bagLayout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .summary {
+        position: static;
+      }
+
+    }
+
+    @media(max-width:650px) {
+
+      .bagPage {
+        padding: 105px 5% 70px;
+      }
+
+      .bagItem {
+        grid-template-columns: 85px 1fr auto;
+        gap: 14px;
+      }
+
+      .bagThumb {
+        width: 85px;
+      }
+
+      .qty {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .itemTotal {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      .removeItem {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .bagHero h1 {
+        font-size: 52px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
-  <header class="siteHeader">
 
-    <a href="index.html" class="brand">
-      RIZELLE
+<header>
+
+  <a href="index.html">
+
+    <img
+      src="assets/rizelle-logo.jpg"
+      alt="RIZELLE"
+    >
+
+  </a>
+
+
+  <nav id="nav">
+
+    <a href="index.html">
+      HOME
     </a>
 
-    <nav>
-      <a href="shop.html">SHOP</a>
-      <a href="orders.html">ORDERS</a>
+    <a href="shop.html">
+      SHOP
+    </a>
 
-      <a href="bag.html">
-        BAG (<span data-bag-count>0</span>)
-      </a>
-    </nav>
+    <a href="index.html#outlet">
+      FACTORY OUTLET
+    </a>
 
-  </header>
+    <a href="index.html#story">
+      OUR STORY
+    </a>
 
+    <a href="index.html#contact">
+      CONTACT
+    </a>
 
-  <main class="bagPage">
+  </nav>
 
-    <section class="bagHeader">
 
-      <div>
-        <p class="eyebrow">YOUR SELECTION</p>
-        <h1>Your Bag</h1>
-      </div>
+  <div class="actions">
 
-      <a href="shop.html" class="continueShopping">
-        ← Continue Shopping
-      </a>
+    <a href="orders.html">
+      ORDERS
+    </a>
 
-    </section>
+    <a href="shop.html">
+      CONTINUE SHOPPING
+    </a>
 
+    <button
+      class="menu"
+      onclick="
+        document.getElementById('nav')
+        .classList.toggle('open')
+      "
+    >
+      ☰
+    </button>
 
-    <section id="bagContainer"></section>
+  </div>
 
+</header>
 
-    <section id="bagSummary" class="bagSummary"></section>
 
-  </main>
+<main class="bagPage">
 
 
-  <div id="toast"></div>
+  <div class="bagHero">
 
+    <small>
+      RIZELLE / YOUR BAG
+    </small>
 
-  <script src="products.js"></script>
+    <h1>
+      Your <i>selection.</i>
+    </h1>
 
+  </div>
 
-  <script>
 
-    const bagContainer =
-      document.getElementById('bagContainer');
+  <div id="bagContent"></div>
 
-    const bagSummary =
-      document.getElementById('bagSummary');
 
+</main>
 
-    function renderBag() {
 
-      const bag = getBag();
+<div id="toast"></div>
 
-      updateBagCount();
 
+<script src="products.js"></script>
 
-      if (!bag.length) {
 
-        bagContainer.innerHTML = `
-          <div class="emptyBag">
+<script>
 
-            <div class="emptyIcon">R</div>
+  function renderBag() {
 
-            <h2>Your bag is empty</h2>
+    const bag = getBag();
 
-            <p>
-              Looks like you haven't added anything yet.
-            </p>
+    const el =
+      document.getElementById("bagContent");
 
-            <a href="shop.html" class="shopButton">
-              SHOP COLLECTION
-            </a>
 
-          </div>
-        `;
+    if (!bag.length) {
 
-        bagSummary.innerHTML = '';
+      el.innerHTML = `
 
-        return;
-      }
+        <div class="emptyBag">
 
+          <h2>
+            Your bag is empty.
+          </h2>
 
-      let subtotal = 0;
-
-
-      bagContainer.innerHTML = `
-
-        <div class="bagItems">
-
-          ${bag.map(item => {
-
-            const p =
-              PRODUCTS.find(x => x.id === item.id);
-
-            if (!p) return '';
-
-
-            const itemTotal =
-              p.price * item.qty;
-
-            subtotal += itemTotal;
-
-
-            return `
-
-              <article class="bagItem">
-
-                <a
-                  href="product.html?id=${p.id}"
-                  class="bagImage"
-                  style="
-                    background-image:
-                    url('${p.image}');
-                  "
-                ></a>
-
-
-                <div class="bagDetails">
-
-                  <div>
-
-                    <small>
-                      ${p.category} · ${p.color}
-                    </small>
-
-                    <h3>
-                      ${p.name}
-                    </h3>
-
-                    <p>
-                      ${money(p.price)}
-                    </p>
-
-                  </div>
-
-
-                  <div class="bagActions">
-
-                    <div class="quantity">
-
-                      <button
-                        onclick="
-                          changeQty('${p.id}', -1)
-                        "
-                      >
-                        −
-                      </button>
-
-
-                      <span>
-                        ${item.qty}
-                      </span>
-
-
-                      <button
-                        onclick="
-                          changeQty('${p.id}', 1)
-                        "
-                      >
-                        +
-                      </button>
-
-                    </div>
-
-
-                    <strong>
-                      ${money(itemTotal)}
-                    </strong>
-
-
-                    <button
-                      class="removeBtn"
-                      onclick="
-                        removeItem('${p.id}')
-                      "
-                    >
-                      REMOVE
-                    </button>
-
-                  </div>
-
-                </div>
-
-              </article>
-
-            `;
-
-          }).join('')}
-
-        </div>
-
-      `;
-
-
-      bagSummary.innerHTML = `
-
-        <div class="summaryBox">
-
-          <div class="summaryRow">
-            <span>Subtotal</span>
-            <strong>
-              ${money(subtotal)}
-            </strong>
-          </div>
-
-
-          <div class="summaryRow muted">
-            <span>Shipping</span>
-            <span>
-              Calculated at checkout
-            </span>
-          </div>
-
-
-          <div class="summaryTotal">
-            <span>Total</span>
-
-            <strong>
-              ${money(subtotal)}
-            </strong>
-          </div>
-
+          <p>
+            Find something that feels like you.
+          </p>
 
           <a
-            href="checkout.html"
-            class="checkoutButton"
+            class="emptyBtn"
+            href="shop.html"
           >
-            PROCEED TO CHECKOUT →
+            EXPLORE COLLECTION ↗
           </a>
 
         </div>
 
       `;
 
-    }
-
-
-    function changeQty(id, amount) {
-
-      const bag = getBag();
-
-      const item =
-        bag.find(x => x.id === id);
-
-      if (!item) return;
-
-
-      item.qty += amount;
-
-
-      if (item.qty <= 0) {
-
-        const index =
-          bag.findIndex(x => x.id === id);
-
-        bag.splice(index, 1);
-
-      }
-
-
-      saveBag(bag);
-
-      renderBag();
+      return;
 
     }
 
 
-    function removeItem(id) {
+    let total = 0;
 
-      const bag = getBag();
 
-      const filtered =
-        bag.filter(x => x.id !== id);
+    const items = bag.map(item => {
 
-      saveBag(filtered);
+      const p =
+        PRODUCTS.find(x => x.id === item.id);
 
-      renderBag();
 
-      toast('Item removed from bag.');
+      if (!p) return "";
+
+
+      const subtotal =
+        p.price * item.qty;
+
+
+      total += subtotal;
+
+
+      return `
+
+        <div class="bagItem">
+
+
+          <a
+            class="bagThumb"
+            href="product.html?id=${p.id}"
+            style="
+              background-image:
+              url('${p.image}');
+            "
+          ></a>
+
+
+          <div class="bagProduct">
+
+            <small>
+              ${p.category} · ${p.color}
+            </small>
+
+            <h3>
+              ${p.name}
+            </h3>
+
+            <p>
+              ${money(p.price)}
+              ${
+                item.size
+                  ? ` · Size ${item.size}`
+                  : ""
+              }
+            </p>
+
+          </div>
+
+
+          <div class="qty">
+
+            <button
+              onclick="
+                change(
+                  '${p.id}',
+                  -1,
+                  '${item.size || ""}'
+                )
+              "
+            >
+              −
+            </button>
+
+            <b>
+              ${item.qty}
+            </b>
+
+            <button
+              onclick="
+                change(
+                  '${p.id}',
+                  1,
+                  '${item.size || ""}'
+                )
+              "
+            >
+              +
+            </button>
+
+          </div>
+
+
+          <strong class="itemTotal">
+            ${money(subtotal)}
+          </strong>
+
+
+          <button
+            class="removeItem"
+            onclick="
+              removeItem(
+                '${p.id}',
+                '${item.size || ""}'
+              )
+            "
+          >
+            ×
+          </button>
+
+
+        </div>
+
+      `;
+
+    }).join("");
+
+
+    el.innerHTML = `
+
+      <div class="bagLayout">
+
+        <div class="bagList">
+
+          ${items}
+
+        </div>
+
+
+        <aside class="summary">
+
+          <div class="summaryTitle">
+            ORDER SUMMARY
+          </div>
+
+
+          <div class="summaryRow">
+
+            <span>
+              SUBTOTAL
+            </span>
+
+            <strong>
+              ${money(total)}
+            </strong>
+
+          </div>
+
+
+          <div class="summaryRow">
+
+            <span>
+              DELIVERY
+            </span>
+
+            <span>
+              At checkout
+            </span>
+
+          </div>
+
+
+          <div class="summaryTotal">
+
+            <strong>
+              TOTAL
+            </strong>
+
+            <strong>
+              ${money(total)}
+            </strong>
+
+          </div>
+
+
+          <a
+            class="checkoutBtn"
+            href="checkout.html"
+          >
+            PROCEED TO CHECKOUT →
+          </a>
+
+        </aside>
+
+      </div>
+
+    `;
+
+  }
+
+
+  function change(id, amount, size) {
+
+    let bag = getBag();
+
+
+    const item =
+      bag.find(
+        x =>
+          x.id === id &&
+          (x.size || "") === size
+      );
+
+
+    if (!item) return;
+
+
+    item.qty += amount;
+
+
+    if (item.qty <= 0) {
+
+      bag =
+        bag.filter(
+          x =>
+            !(
+              x.id === id &&
+              (x.size || "") === size
+            )
+        );
 
     }
 
+
+    saveBag(bag);
 
     renderBag();
 
-  </script>
+  }
+
+
+  function removeItem(id, size) {
+
+    const bag =
+      getBag().filter(
+        x =>
+          !(
+            x.id === id &&
+            (x.size || "") === size
+          )
+      );
+
+
+    saveBag(bag);
+
+    renderBag();
+
+  }
+
+
+  renderBag();
+
+</script>
+
 
 </body>
 </html>
