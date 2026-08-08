@@ -3,294 +3,682 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1"
+<title>RIZELLE — Wear Your Vision</title>
 
->
-
-<title>RIZELLE — Fashion That Never Fades</title>
-
-<link
-  rel="stylesheet"
-  href="style.css"
->
+<link rel="stylesheet" href="style.css">
 
 <style>
 
 /* =========================================================
-   RIZELLE HOMEPAGE CREATIVE LAYER
+   RIZELLE — CREATIVE HOMEPAGE
    ========================================================= */
 
-.hero {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.78),
-      rgba(0,0,0,.18)
-    ),
-    url("https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1800")
-    center/cover no-repeat !important;
-}
-
-.heroText {
-  max-width: 780px;
-}
-
-.heroText h1 {
-  text-shadow: 0 8px 30px rgba(0,0,0,.35);
+:root{
+  --black:#0b0b0b;
+  --white:#fff;
+  --cream:#f3f1ec;
+  --gray:#999;
 }
 
 
-/* COLLECTION */
+/* =========================================================
+   HERO
+   ========================================================= */
 
-.collection {
-  background: #f3f1ec;
-}
-
-.collection .grid article {
-  background-size: cover !important;
-  background-position: center !important;
-  transition:
-    transform .5s ease,
-    background-position .5s ease;
-}
-
-.collection .grid article:hover {
-  transform: translateY(-8px);
-}
-
-.cardOne {
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.72),
-      rgba(0,0,0,.05)
-    ),
-    url("https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200")
-    center/cover no-repeat !important;
-}
-
-.cardTwo {
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.70),
-      rgba(0,0,0,.04)
-    ),
-    url("https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1200")
-    center/cover no-repeat !important;
-}
-
-.cardThree {
-  background:
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.75),
-      rgba(0,0,0,.05)
-    ),
-    url("https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1200")
-    center/cover no-repeat !important;
-}
-
-.collectionCard {
-  position: relative;
-}
-
-.collectionCard a {
-  position: absolute;
-  inset: 0;
-  display: block;
-  color: #fff;
-}
-
-.collectionCard > a > div:last-child {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-
-/* LOOKBOOK */
-
-.lookbook {
-  min-height: 700px;
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  background: #111;
-  color: #fff;
-}
-
-.lookbookImage {
-  min-height: 700px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.02),
-      rgba(0,0,0,.42)
-    ),
-    url("https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1600")
-    center/cover no-repeat;
-}
-
-.lookbookText {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 9%;
-}
-
-.lookbookText small {
-  color: #888;
-  font-size: 9px;
-  letter-spacing: 4px;
-}
-
-.lookbookText h2 {
-  font:
-    500 clamp(50px,6vw,88px)/.92
-    'Playfair Display',
-    serif;
-
-  letter-spacing: -3px;
-  margin: 20px 0;
-}
-
-.lookbookText p {
-  max-width: 420px;
-  color: #aaa;
-  font-size: 13px;
-  line-height: 2;
-  margin-bottom: 20px;
-}
-
-.btn.dark {
-  background: #fff;
-  color: #111;
-  border-color: #fff;
-  align-self: flex-start;
-}
-
-.btn.dark:hover {
-  background: transparent;
-  color: #fff;
-}
-
-
-/* OUTLET IMAGE */
-
-.outlet .visual {
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.28),
-      rgba(0,0,0,.65)
-    ),
-    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1200")
-    center/cover no-repeat;
-}
-
-.outlet .visual strong {
-  color: rgba(255,255,255,.7);
-}
-
-
-/* STORY */
-
-.story {
-  background: #fff;
-}
-
-
-/* BRAND STATEMENT */
-
-.brandImage {
-  min-height: 650px;
-  display: flex;
-  align-items: center;
-
-  padding: 100px 9%;
-
-  color: #fff;
+.hero{
+  position:relative;
+  overflow:hidden;
 
   background:
     linear-gradient(
       90deg,
       rgba(0,0,0,.82),
-      rgba(0,0,0,.12)
+      rgba(0,0,0,.20)
     ),
-    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1800")
+    url("https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2000")
+    center/cover no-repeat !important;
+}
+
+
+/* Cinematic image movement */
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-7%;
+
+  background:
+    url("https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=2000")
+    center/cover no-repeat;
+
+  z-index:0;
+
+  animation:
+    heroZoom 16s ease-in-out infinite alternate;
+}
+
+
+@keyframes heroZoom{
+
+  0%{
+    transform:scale(1);
+  }
+
+  100%{
+    transform:scale(1.09);
+  }
+
+}
+
+
+.hero .shade{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.80),
+      rgba(0,0,0,.18)
+    );
+
+  z-index:1;
+}
+
+
+.heroText{
+  position:relative;
+  z-index:2;
+
+  max-width:850px;
+
+  animation:
+    heroTextReveal 1.2s
+    cubic-bezier(.2,.8,.2,1)
+    both;
+}
+
+
+@keyframes heroTextReveal{
+
+  from{
+    opacity:0;
+    transform:translateY(45px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+
+.heroText small{
+  animation:
+    fadeUp .8s .15s both;
+}
+
+
+.heroText h1{
+  font-weight:900 !important;
+  letter-spacing:-4px;
+
+  text-shadow:
+    0 12px 35px rgba(0,0,0,.35);
+
+  animation:
+    titleReveal 1s .25s
+    cubic-bezier(.2,.8,.2,1)
+    both;
+}
+
+
+@keyframes titleReveal{
+
+  from{
+    opacity:0;
+    transform:translateY(55px);
+    filter:blur(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+
+}
+
+
+.heroText p{
+  animation:
+    fadeUp .9s .55s both;
+}
+
+
+.heroText .btn{
+  animation:
+    fadeUp .9s .72s both;
+}
+
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(22px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+
+/* Hero bottom */
+
+.heroFoot{
+  position:relative;
+  z-index:3;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro{
+  background:#fff;
+}
+
+
+.intro h2{
+  letter-spacing:-2px;
+}
+
+
+/* =========================================================
+   COLLECTION
+   ========================================================= */
+
+.collection{
+  background:var(--cream);
+}
+
+
+.collection .head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+}
+
+
+.collection .grid article{
+  position:relative;
+  overflow:hidden;
+
+  min-height:500px;
+
+  background-size:cover !important;
+  background-position:center !important;
+
+  transition:
+    transform .5s ease;
+}
+
+
+.collection .grid article::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:inherit;
+
+  transform:scale(1);
+
+  transition:
+    transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.collection .grid article:hover::before{
+  transform:scale(1.08);
+}
+
+
+.collection .grid article:hover{
+  transform:translateY(-7px);
+}
+
+
+.collectionCard a{
+  position:absolute;
+  inset:0;
+  z-index:3;
+
+  display:block;
+
+  color:#fff;
+}
+
+
+.collectionCard a > div:last-child{
+  position:absolute;
+  left:0;
+  bottom:0;
+
+  width:100%;
+
+  padding:35px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0,0,0,.75)
+    );
+}
+
+
+.cardOne{
+  background:
+    url("https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1400")
+    center/cover no-repeat !important;
+}
+
+
+.cardTwo{
+  background:
+    url("https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=1400")
+    center/cover no-repeat !important;
+}
+
+
+.cardThree{
+  background:
+    url("https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1400")
+    center/cover no-repeat !important;
+}
+
+
+.collectionCard h3{
+  font-size:30px;
+  margin:8px 0;
+}
+
+
+.collectionCard p{
+  color:#ddd;
+}
+
+
+/* =========================================================
+   LOOKBOOK
+   ========================================================= */
+
+.lookbook{
+  min-height:720px;
+
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+
+  background:#111;
+  color:#fff;
+}
+
+
+.lookbookImage{
+  min-height:720px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.03),
+      rgba(0,0,0,.48)
+    ),
+    url("https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1800")
+    center/cover no-repeat;
+
+  transition:
+    transform 1s ease;
+}
+
+
+.lookbook:hover .lookbookImage{
+  transform:scale(1.025);
+}
+
+
+.lookbookText{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:90px 10%;
+}
+
+
+.lookbookText small{
+  color:#888;
+  letter-spacing:4px;
+  font-size:9px;
+}
+
+
+.lookbookText h2{
+  font-size:clamp(55px,6vw,95px);
+  line-height:.9;
+
+  letter-spacing:-4px;
+
+  margin:20px 0 30px;
+}
+
+
+.lookbookText p{
+  max-width:430px;
+
+  color:#aaa;
+
+  line-height:2;
+
+  font-size:13px;
+
+  margin-bottom:25px;
+}
+
+
+.btn.dark{
+  align-self:flex-start;
+
+  background:#fff;
+  color:#111;
+
+  border-color:#fff;
+}
+
+
+.btn.dark:hover{
+  background:transparent;
+  color:#fff;
+}
+
+
+/* =========================================================
+   FACTORY OUTLET
+   ========================================================= */
+
+.outlet .visual{
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.65)
+    ),
+    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1400")
+    center/cover no-repeat !important;
+}
+
+
+.outlet .visual strong{
+  color:rgba(255,255,255,.75);
+}
+
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.story{
+  background:#fff;
+}
+
+
+.story h2{
+  letter-spacing:-3px;
+}
+
+
+/* =========================================================
+   BRAND STATEMENT
+   ========================================================= */
+
+.brandImage{
+  position:relative;
+
+  min-height:700px;
+
+  display:flex;
+  align-items:center;
+
+  padding:100px 9%;
+
+  color:#fff;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.84),
+      rgba(0,0,0,.10)
+    ),
+    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=2000")
     center/cover no-repeat;
 }
 
-.brandImage small {
-  font-size: 9px;
-  letter-spacing: 4px;
-  color: #aaa;
-}
 
-.brandImage h2 {
-  font:
-    500 clamp(52px,7vw,100px)/.9
-    'Playfair Display',
-    serif;
+.brandImage::after{
+  content:"";
 
-  letter-spacing: -4px;
-  margin: 22px 0 30px;
-}
+  position:absolute;
+  inset:-5%;
 
+  background:
+    url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=2000")
+    center/cover no-repeat;
 
-/* MOBILE */
+  z-index:0;
 
-@media(max-width:850px) {
+  opacity:.18;
 
-  .lookbook {
-    grid-template-columns: 1fr;
-  }
-
-  .lookbookImage {
-    min-height: 560px;
-  }
-
-  .lookbookText {
-    min-height: 500px;
-    padding: 80px 8%;
-  }
-
-  .brandImage {
-    min-height: 600px;
-    padding: 80px 7%;
-  }
-
+  animation:
+    heroZoom 18s ease-in-out infinite alternate;
 }
 
 
-@media(max-width:520px) {
+.brandImage > div{
+  position:relative;
+  z-index:2;
+}
 
-  .hero {
-    background-position: 62% center !important;
+
+.brandImage small{
+  color:#aaa;
+  font-size:9px;
+  letter-spacing:4px;
+}
+
+
+.brandImage h2{
+  font-size:clamp(55px,7vw,105px);
+
+  line-height:.9;
+
+  letter-spacing:-5px;
+
+  margin:25px 0 35px;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta{
+  position:relative;
+  overflow:hidden;
+}
+
+
+.cta h2{
+  letter-spacing:-4px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.siteFoot{
+  background:#080808;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.intro,
+.collection,
+.lookbook,
+.outlet,
+.story,
+.brandImage,
+.cta{
+  animation:
+    sectionReveal
+    .9s ease both;
+
+  animation-timeline:view();
+  animation-range:entry 0% cover 28%;
+}
+
+
+@keyframes sectionReveal{
+
+  from{
+    opacity:.2;
+    transform:translateY(35px);
   }
 
-  .lookbookImage {
-    min-height: 470px;
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 
-  .lookbookText {
-    padding: 70px 7%;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
   }
 
-  .brandImage {
-    min-height: 540px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:850px){
+
+  .heroText h1{
+    letter-spacing:-2px;
   }
 
-  .brandImage h2 {
-    letter-spacing: -2px;
+
+  .lookbook{
+    grid-template-columns:1fr;
+  }
+
+
+  .lookbookImage{
+    min-height:520px;
+  }
+
+
+  .lookbookText{
+    min-height:500px;
+
+    padding:75px 8%;
+  }
+
+
+  .brandImage{
+    min-height:600px;
+
+    padding:80px 7%;
+  }
+
+}
+
+
+@media(max-width:520px){
+
+  .hero{
+    background-position:62% center !important;
+  }
+
+
+  .hero::before{
+    background-position:62% center;
+  }
+
+
+  .heroText h1{
+    font-size:clamp(45px,13vw,70px);
+
+    letter-spacing:-2px;
+  }
+
+
+  .collection .grid article{
+    min-height:430px;
+  }
+
+
+  .lookbookImage{
+    min-height:470px;
+  }
+
+
+  .lookbookText{
+    padding:65px 7%;
+  }
+
+
+  .lookbookText h2{
+    font-size:58px;
+  }
+
+
+  .brandImage{
+    min-height:550px;
+  }
+
+
+  .brandImage h2{
+    font-size:58px;
+
+    letter-spacing:-2px;
   }
 
 }
@@ -319,25 +707,15 @@ alt="RIZELLE"
 
 <nav id="nav">
 
-<a href="#home">
-HOME
-</a>
+<a href="#home">HOME</a>
 
-<a href="shop.html">
-SHOP
-</a>
+<a href="shop.html">SHOP</a>
 
-<a href="#outlet">
-FACTORY OUTLET
-</a>
+<a href="#outlet">FACTORY OUTLET</a>
 
-<a href="#story">
-OUR STORY
-</a>
+<a href="#story">OUR STORY</a>
 
-<a href="#contact">
-CONTACT
-</a>
+<a href="#contact">CONTACT</a>
 
 </nav>
 
@@ -354,9 +732,7 @@ onclick="location.href='shop.html'"
 
 BAG
 
-<b data-bag-count>
-0
-</b>
+<b data-bag-count>0</b>
 
 </a>
 
@@ -381,8 +757,8 @@ document
      ===================================================== -->
 
 <section
-  class="hero"
-  id="home"
+class="hero"
+id="home"
 >
 
 <div class="shade"></div>
@@ -395,19 +771,21 @@ RIZELLE / NEW ERA
 
 <h1>
 
-FASHION<br>
+WEAR YOUR<br>
 
-<i>THAT NEVER</i><br>
+VISION.<br>
 
-FADES.
+OWN YOUR<br>
+
+JOURNEY.
 
 </h1>
 
 <p>
 
-Timeless silhouettes.
-Modern confidence.
-A new expression of everyday fashion.
+Style with purpose.
+Move with confidence.
+Create your own direction.
 
 </p>
 
@@ -485,8 +863,8 @@ to speak without saying too much.
      ===================================================== -->
 
 <section
-  class="collection"
-  id="collection"
+class="collection"
+id="collection"
 >
 
 <div class="head">
@@ -511,9 +889,7 @@ VIEW ALL ↗
 
 <div class="grid">
 
-<article
-  class="collectionCard cardOne"
->
+<article class="collectionCard cardOne">
 
 <a href="shop.html">
 
@@ -521,9 +897,7 @@ VIEW ALL ↗
 
 <div>
 
-<b>
-01
-</b>
+<b>01</b>
 
 <h3>
 New Arrivals
@@ -539,9 +913,7 @@ Discover the latest RIZELLE pieces.
 
 </article>
 
-<article
-  class="collectionCard cardTwo"
->
+<article class="collectionCard cardTwo">
 
 <a href="shop.html">
 
@@ -549,9 +921,7 @@ Discover the latest RIZELLE pieces.
 
 <div>
 
-<b>
-02
-</b>
+<b>02</b>
 
 <h3>
 Everyday Essentials
@@ -567,9 +937,7 @@ Designed to become your favourites.
 
 </article>
 
-<article
-  class="collectionCard cardThree"
->
+<article class="collectionCard cardThree">
 
 <a href="shop.html">
 
@@ -577,9 +945,7 @@ Designed to become your favourites.
 
 <div>
 
-<b>
-03
-</b>
+<b>03</b>
 
 <h3>
 Signature Pieces
@@ -647,8 +1013,8 @@ EXPLORE THE LOOKS ↗ </a>
      ===================================================== -->
 
 <section
-  class="outlet"
-  id="outlet"
+class="outlet"
+id="outlet"
 >
 
 <div class="visual">
@@ -660,7 +1026,6 @@ R
 <small>
 
 RIZELLE<br>
-
 FACTORY OUTLET
 
 </small>
@@ -732,8 +1097,8 @@ GET DIRECTIONS ↗ </a>
      ===================================================== -->
 
 <section
-  class="story"
-  id="story"
+class="story"
+id="story"
 >
 
 <div>
@@ -768,9 +1133,7 @@ from now.
 <a
 href="#"
 onclick="
-toast(
-'Our story page will be added later.'
-);
+toast('Our story page will be added later.');
 return false;
 "
 
@@ -783,7 +1146,7 @@ DISCOVER OUR STORY ↗ </a>
 </section>
 
 <!-- =====================================================
-     BRAND IMAGE
+     BRAND STATEMENT
      ===================================================== -->
 
 <section class="brandImage">
@@ -817,12 +1180,12 @@ SHOP THE COLLECTION ↗ </a>
 </section>
 
 <!-- =====================================================
-     CONTACT CTA
+     CONTACT / FINAL CTA
      ===================================================== -->
 
 <section
-  class="cta"
-  id="contact"
+class="cta"
+id="contact"
 >
 
 <div style="margin-bottom:35px">
@@ -832,11 +1195,11 @@ FACTORY & SHOP
 </small>
 
 <p
-  style="
-    color:#aaa;
-    font-size:12px;
-    line-height:1.8;
-  "
+style="
+color:#aaa;
+font-size:12px;
+line-height:1.8;
+"
 >
 
 Piliyandala, Colombo, Sri Lanka<br>
@@ -871,7 +1234,7 @@ Wear your<br>
 
 <a
 class="btn light"
-href="shop.html"
+href="#collection"
 
 >
 
@@ -928,21 +1291,21 @@ TikTok
 updateBagCount();
 
 
-function toast(message) {
+function toast(message){
 
-  const t =
-    document.getElementById("toast");
+const t =
+document.getElementById("toast");
 
-  t.textContent = message;
+t.textContent = message;
 
-  t.className = "show";
+t.className = "show";
 
-  setTimeout(
-    () => {
-      t.className = "";
-    },
-    2400
-  );
+setTimeout(
+()=>{
+t.className="";
+},
+2400
+);
 
 }
 
