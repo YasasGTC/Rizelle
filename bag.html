@@ -1,4 +1,311 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bag — RIZELLE</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="shop.css"></head><body><header><a href="index.html"><img src="assets/rizelle-logo.jpg"></a><nav id="nav"><a href="index.html">HOME</a><a href="shop.html">SHOP</a><a href="index.html#outlet">FACTORY OUTLET</a><a href="index.html#story">OUR STORY</a><a href="index.html#contact">CONTACT</a></nav><div class="actions"><a href="orders.html">ORDERS</a><a href="shop.html">CONTINUE SHOPPING</a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header><main class="bagPage"><div class="shopHero"><small>RIZELLE / YOUR BAG</small><h1>Your <i>selection.</i></h1></div><div id="bagContent"></div></main><script src="products.js"></script><script>
-function renderBag(){let b=getBag(),el=document.getElementById('bagContent');if(!b.length){el.innerHTML='<div class="emptyBag"><h2>Your bag is empty.</h2><p>Find something that feels like you.</p><a class="btn dark" href="shop.html">EXPLORE COLLECTION ↗</a></div>';return}let total=0;el.innerHTML='<div class="bagList">'+b.map(i=>{let p=PRODUCTS.find(x=>x.id===i.id),sub=p.price*i.qty;total+=sub;return `<div class="bagItem"><div class="bagThumb productVisual ${p.tone}"><span class="monogram">R</span></div><div><small>${p.category}</small><h3>${p.name}</h3><p>${money(p.price)}${i.size?` · Size ${i.size}`:''}</p></div><div class="qty"><button onclick="change('${p.id}',-1)">−</button><b>${i.qty}</b><button onclick="change('${p.id}',1)">+</button></div><strong>${money(sub)}</strong><button onclick="removeItem('${p.id}')">×</button></div>`}).join('')+'</div><div class="summary"><span>SUBTOTAL</span><strong>'+money(total)+'</strong><p>Delivery charges are calculated at checkout.</p><button class="bigAdd" onclick="location.href='checkout.html'">PROCEED TO CHECKOUT →</button></div>'}
-function change(id,n){let b=getBag(),i=b.find(x=>x.id===id);i.qty+=n;if(i.qty<1)b=b.filter(x=>x.id!==id);saveBag(b);renderBag()}function removeItem(id){saveBag(getBag().filter(x=>x.id!==id));renderBag()}renderBag();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RIZELLE — Your Bag</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="bag.css">
+</head>
+
+<body>
+
+  <header class="siteHeader">
+
+    <a href="index.html" class="brand">
+      RIZELLE
+    </a>
+
+    <nav>
+      <a href="shop.html">SHOP</a>
+      <a href="orders.html">ORDERS</a>
+
+      <a href="bag.html">
+        BAG (<span data-bag-count>0</span>)
+      </a>
+    </nav>
+
+  </header>
+
+
+  <main class="bagPage">
+
+    <section class="bagHeader">
+
+      <div>
+        <p class="eyebrow">YOUR SELECTION</p>
+        <h1>Your Bag</h1>
+      </div>
+
+      <a href="shop.html" class="continueShopping">
+        ← Continue Shopping
+      </a>
+
+    </section>
+
+
+    <section id="bagContainer"></section>
+
+
+    <section id="bagSummary" class="bagSummary"></section>
+
+  </main>
+
+
+  <div id="toast"></div>
+
+
+  <script src="products.js"></script>
+
+
+  <script>
+
+    const bagContainer =
+      document.getElementById('bagContainer');
+
+    const bagSummary =
+      document.getElementById('bagSummary');
+
+
+    function renderBag() {
+
+      const bag = getBag();
+
+      updateBagCount();
+
+
+      if (!bag.length) {
+
+        bagContainer.innerHTML = `
+          <div class="emptyBag">
+
+            <div class="emptyIcon">R</div>
+
+            <h2>Your bag is empty</h2>
+
+            <p>
+              Looks like you haven't added anything yet.
+            </p>
+
+            <a href="shop.html" class="shopButton">
+              SHOP COLLECTION
+            </a>
+
+          </div>
+        `;
+
+        bagSummary.innerHTML = '';
+
+        return;
+      }
+
+
+      let subtotal = 0;
+
+
+      bagContainer.innerHTML = `
+
+        <div class="bagItems">
+
+          ${bag.map(item => {
+
+            const p =
+              PRODUCTS.find(x => x.id === item.id);
+
+            if (!p) return '';
+
+
+            const itemTotal =
+              p.price * item.qty;
+
+            subtotal += itemTotal;
+
+
+            return `
+
+              <article class="bagItem">
+
+                <a
+                  href="product.html?id=${p.id}"
+                  class="bagImage"
+                  style="
+                    background-image:
+                    url('${p.image}');
+                  "
+                ></a>
+
+
+                <div class="bagDetails">
+
+                  <div>
+
+                    <small>
+                      ${p.category} · ${p.color}
+                    </small>
+
+                    <h3>
+                      ${p.name}
+                    </h3>
+
+                    <p>
+                      ${money(p.price)}
+                    </p>
+
+                  </div>
+
+
+                  <div class="bagActions">
+
+                    <div class="quantity">
+
+                      <button
+                        onclick="
+                          changeQty('${p.id}', -1)
+                        "
+                      >
+                        −
+                      </button>
+
+
+                      <span>
+                        ${item.qty}
+                      </span>
+
+
+                      <button
+                        onclick="
+                          changeQty('${p.id}', 1)
+                        "
+                      >
+                        +
+                      </button>
+
+                    </div>
+
+
+                    <strong>
+                      ${money(itemTotal)}
+                    </strong>
+
+
+                    <button
+                      class="removeBtn"
+                      onclick="
+                        removeItem('${p.id}')
+                      "
+                    >
+                      REMOVE
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            `;
+
+          }).join('')}
+
+        </div>
+
+      `;
+
+
+      bagSummary.innerHTML = `
+
+        <div class="summaryBox">
+
+          <div class="summaryRow">
+            <span>Subtotal</span>
+            <strong>
+              ${money(subtotal)}
+            </strong>
+          </div>
+
+
+          <div class="summaryRow muted">
+            <span>Shipping</span>
+            <span>
+              Calculated at checkout
+            </span>
+          </div>
+
+
+          <div class="summaryTotal">
+            <span>Total</span>
+
+            <strong>
+              ${money(subtotal)}
+            </strong>
+          </div>
+
+
+          <a
+            href="checkout.html"
+            class="checkoutButton"
+          >
+            PROCEED TO CHECKOUT →
+          </a>
+
+        </div>
+
+      `;
+
+    }
+
+
+    function changeQty(id, amount) {
+
+      const bag = getBag();
+
+      const item =
+        bag.find(x => x.id === id);
+
+      if (!item) return;
+
+
+      item.qty += amount;
+
+
+      if (item.qty <= 0) {
+
+        const index =
+          bag.findIndex(x => x.id === id);
+
+        bag.splice(index, 1);
+
+      }
+
+
+      saveBag(bag);
+
+      renderBag();
+
+    }
+
+
+    function removeItem(id) {
+
+      const bag = getBag();
+
+      const filtered =
+        bag.filter(x => x.id !== id);
+
+      saveBag(filtered);
+
+      renderBag();
+
+      toast('Item removed from bag.');
+
+    }
+
+
+    renderBag();
+
+  </script>
+
+</body>
+</html>
