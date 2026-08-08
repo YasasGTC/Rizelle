@@ -1,6 +1,316 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product — RIZELLE</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="shop.css"></head><body><header><a href="index.html"><img src="assets/rizelle-logo.jpg"></a><nav id="nav"><a href="index.html">HOME</a><a href="shop.html">SHOP</a><a href="index.html#outlet">FACTORY OUTLET</a><a href="index.html#story">OUR STORY</a><a href="index.html#contact">CONTACT</a></nav><div class="actions"><a href="orders.html">ORDERS</a><a href="shop.html">← SHOP</a><a href="bag.html">BAG <b data-bag-count>0</b></a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header><main id="detail" class="detail"></main><div id="toast"></div><script src="products.js"></script><script>
-let selectedSize="M";
-function addSelectedToBag(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;let bag=getBag(),item=bag.find(x=>x.id===id&&x.size===selectedSize);if(item)item.qty++;else bag.push({id,qty:1,size:selectedSize});saveBag(bag);toast(p.name+" (Size "+selectedSize+") added to bag.");}
-const id=new URLSearchParams(location.search).get('id')||'rz-001',p=PRODUCTS.find(x=>x.id===id)||PRODUCTS[0];document.title=p.name+' — RIZELLE';document.getElementById('detail').innerHTML=`<a class="back" href="shop.html">← BACK TO SHOP</a><div class="detailGrid"><div class="detailVisual productVisual ${p.tone}"><span class="monogram">R</span>${p.badge?`<b class="badge">${p.badge}</b>`:''}</div><div class="detailInfo"><small>${p.category} / ${p.color}</small><h1>${p.name}</h1><div class="price">${money(p.price)} ${p.oldPrice?`<del>${money(p.oldPrice)}</del>`:''}</div><p>${p.desc}</p><div class="sizeTitle">SELECT SIZE</div><div class="sizes">${["S","M","L","XL"].map(s=>`<button class="sizeBtn ${s===selectedSize?"active":""}" onclick="selectSize('${s}');return false;">${s}</button>`).join("")}</div><button class="bigAdd" onclick="addSelectedToBag('${p.id}')">ADD TO BAG — ${money(p.price)}</button><div class="detailsLines"><div>FREE DELIVERY <span>Orders over LKR 15,000</span></div><div>STORE PICKUP <span>Available at Factory Outlet</span></div><div>RIZELLE QUALITY <span>Carefully selected materials</span></div></div></div></div>`;function selectSize(s){selectedSize=s;document.querySelectorAll(".sizeBtn").forEach(b=>b.classList.toggle("active",b.textContent===s));}
-updateBagCount();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RIZELLE — Product</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+<header class="siteHeader">
+
+  <a href="index.html" class="brand">
+    RIZELLE
+  </a>
+
+  <nav>
+    <a href="shop.html">SHOP</a>
+    <a href="orders.html">ORDERS</a>
+
+    <a href="bag.html">
+      BAG (<span data-bag-count>0</span>)
+    </a>
+  </nav>
+
+</header>
+
+
+<main class="productPage">
+
+  <div id="productContainer"></div>
+
+</main>
+
+
+<div id="toast"></div>
+
+
+<script src="products.js"></script>
+
+
+<script>
+
+  const container =
+    document.getElementById('productContainer');
+
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+
+  const productId =
+    params.get('id');
+
+
+  const product =
+    PRODUCTS.find(p => p.id === productId);
+
+
+  updateBagCount();
+
+
+  if (!product) {
+
+    container.innerHTML = `
+
+      <section class="productNotFound">
+
+        <h1>Product Not Found</h1>
+
+        <p>
+          Sorry, this product is no longer available.
+        </p>
+
+        <a href="shop.html">
+          BACK TO SHOP
+        </a>
+
+      </section>
+
+    `;
+
+  } else {
+
+    document.title =
+      `RIZELLE — ${product.name}`;
+
+
+    container.innerHTML = `
+
+      <section class="productLayout">
+
+
+        <div
+          class="productMainImage"
+          style="
+            background-image:
+            url('${product.image}');
+          "
+        >
+
+          ${
+            product.badge
+              ? `<span class="badge">
+                  ${product.badge}
+                </span>`
+              : ''
+          }
+
+        </div>
+
+
+        <div class="productDetails">
+
+          <p class="productCategory">
+            ${product.category}
+          </p>
+
+
+          <h1>
+            ${product.name}
+          </h1>
+
+
+          <div class="productPrice">
+
+            <strong>
+              ${money(product.price)}
+            </strong>
+
+            ${
+              product.oldPrice
+                ? `<del>
+                    ${money(product.oldPrice)}
+                  </del>`
+                : ''
+            }
+
+          </div>
+
+
+          <p class="productDescription">
+            ${product.desc}
+          </p>
+
+
+          <div class="productOption">
+
+            <label>
+              SIZE
+            </label>
+
+            <div class="sizes">
+
+              <button
+                class="sizeBtn"
+                data-size="S"
+              >
+                S
+              </button>
+
+              <button
+                class="sizeBtn active"
+                data-size="M"
+              >
+                M
+              </button>
+
+              <button
+                class="sizeBtn"
+                data-size="L"
+              >
+                L
+              </button>
+
+              <button
+                class="sizeBtn"
+                data-size="XL"
+              >
+                XL
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="productActions">
+
+            <button
+              class="addProductBtn"
+              id="addProductBtn"
+            >
+              ADD TO BAG +
+            </button>
+
+
+            <button
+              class="whatsappBtn"
+              onclick="
+                whatsappDetails(
+                  'Hello RIZELLE, I am interested in ${product.name}.'
+                )
+              "
+            >
+              ASK ON WHATSAPP
+            </button>
+
+          </div>
+
+
+          <div class="productInfo">
+
+            <div>
+              <span>COLOR</span>
+              <strong>${product.color}</strong>
+            </div>
+
+            <div>
+              <span>CATEGORY</span>
+              <strong>${product.category}</strong>
+            </div>
+
+            <div>
+              <span>PRODUCT CODE</span>
+              <strong>${product.id}</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    `;
+
+
+    let selectedSize = 'M';
+
+
+    document
+      .querySelectorAll('.sizeBtn')
+      .forEach(button => {
+
+        button.addEventListener('click', () => {
+
+          document
+            .querySelectorAll('.sizeBtn')
+            .forEach(btn =>
+              btn.classList.remove('active')
+            );
+
+
+          button.classList.add('active');
+
+
+          selectedSize =
+            button.dataset.size;
+
+        });
+
+      });
+
+
+    document
+      .getElementById('addProductBtn')
+      .addEventListener('click', () => {
+
+        const bag = getBag();
+
+
+        const existing =
+          bag.find(item =>
+            item.id === product.id &&
+            item.size === selectedSize
+          );
+
+
+        if (existing) {
+
+          existing.qty++;
+
+        } else {
+
+          bag.push({
+
+            id: product.id,
+
+            size: selectedSize,
+
+            qty: 1
+
+          });
+
+        }
+
+
+        saveBag(bag);
+
+
+        toast(
+          `${product.name} — Size ${selectedSize} added to bag.`
+        );
+
+      });
+
+  }
+
+</script>
+
+</body>
+</html>
