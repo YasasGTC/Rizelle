@@ -1,467 +1,2339 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Product — RIZELLE</title>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="shop.css">
+>
+
+  <title>RIZELLE — Product</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="shop.css"
+  >
 
   <style>
-    .detail {
-      padding: 135px 6.5% 100px;
-      max-width: 1450px;
-      margin: auto;
-    }
 
-    .back {
-      display: inline-block;
-      margin-bottom: 35px;
-      font-size: 9px;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #111;
-      padding-bottom: 5px;
-    }
+    /* =====================================================
+       RIZELLE — PREMIUM PRODUCT PAGE
+    ===================================================== */
 
-    .detailGrid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 70px;
-      align-items: start;
-    }
+    .productPage {
 
-    .detailVisual {
-      position: relative;
       width: 100%;
-      aspect-ratio: 4 / 5;
-      background-size: cover;
-      background-position: center;
-      overflow: hidden;
-      background-color: #eee;
+
+      padding:
+        42px 0 85px;
+
     }
 
-    .detailVisual::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,.15),
-        transparent 35%
-      );
-      pointer-events: none;
-    }
 
-    .detailVisual .badge {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 2;
-      background: #fff;
-      color: #111;
-      padding: 9px 12px;
-      font-size: 8px;
-      letter-spacing: 1.5px;
-    }
+    /* =====================================================
+       BACK
+    ===================================================== */
 
-    .detailInfo {
-      padding-top: 20px;
-      max-width: 550px;
-    }
+    .backShop {
 
-    .detailInfo > small {
-      color: #888;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+      display: inline-flex;
 
-    .detailInfo h1 {
-      font: 500 clamp(42px,5vw,72px)/.95
-        'Playfair Display', serif;
-      letter-spacing: -2px;
-      margin: 18px 0;
-    }
+      align-items: center;
 
-    .price {
-      font-size: 15px;
-      letter-spacing: .5px;
-      margin-bottom: 30px;
-    }
+      gap: 7px;
 
-    .price del {
-      color: #999;
-      margin-left: 12px;
-      font-size: 12px;
-    }
-
-    .detailInfo > p {
-      color: #777;
-      font-size: 13px;
-      line-height: 2;
-      max-width: 480px;
-      margin-bottom: 35px;
-    }
-
-    .sizeTitle {
-      font-size: 9px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .sizes {
-      display: flex;
-      gap: 8px;
       margin-bottom: 28px;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+
+      opacity: .62;
+
+      transition:
+        opacity .3s ease,
+        transform .3s ease;
+
     }
+
+
+    .backShop:hover {
+
+      opacity: 1;
+
+      transform:
+        translateX(-3px);
+
+    }
+
+
+    /* =====================================================
+       MAIN PRODUCT LAYOUT
+    ===================================================== */
+
+    .productDetail {
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .88fr)
+        minmax(340px, .72fr);
+
+      gap: 58px;
+
+      align-items: start;
+
+      max-width: 1120px;
+
+      margin: 0 auto;
+
+    }
+
+
+    /* =====================================================
+       MAIN PRODUCT IMAGE
+    ===================================================== */
+
+    .productMainImage {
+
+      position: relative;
+
+      width: 100%;
+
+      max-width: 590px;
+
+      margin: 0 auto;
+
+      overflow: hidden;
+
+      background: #f2f2f0;
+
+    }
+
+
+    .productMainImage img {
+
+      display: block;
+
+      width: 100%;
+
+      height: min(
+        680px,
+        48vw
+      );
+
+      min-height: 480px;
+
+      object-fit: cover;
+
+      object-position: center;
+
+      transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    .productMainImage:hover img {
+
+      transform:
+        scale(1.025);
+
+    }
+
+
+    /* =====================================================
+       BADGE
+    ===================================================== */
+
+    .productBadge {
+
+      position: absolute;
+
+      top: 15px;
+
+      left: 15px;
+
+      z-index: 5;
+
+      padding:
+        7px 10px;
+
+      background:
+        rgba(15,15,15,.9);
+
+      color: #fff;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* =====================================================
+       PRODUCT DETAILS
+    ===================================================== */
+
+    .productDetails {
+
+      max-width: 455px;
+
+      padding-top: 12px;
+
+    }
+
+
+    .productCategory {
+
+      display: block;
+
+      margin-bottom: 11px;
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+
+      opacity: .48;
+
+    }
+
+
+    .productDetails h1 {
+
+      margin: 0;
+
+      max-width: 420px;
+
+      font-size: clamp(
+        26px,
+        3vw,
+        40px
+      );
+
+      font-weight: 600;
+
+      line-height: 1.08;
+
+      letter-spacing: -.025em;
+
+    }
+
+
+    .productColor {
+
+      margin:
+        9px 0 0;
+
+      font-size: 11px;
+
+      opacity: .55;
+
+    }
+
+
+    /* =====================================================
+       PRICE
+    ===================================================== */
+
+    .productPrice {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 20px;
+
+    }
+
+
+    .productPrice .current {
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      letter-spacing: .01em;
+
+    }
+
+
+    .productPrice .old {
+
+      font-size: 11px;
+
+      opacity: .42;
+
+      text-decoration:
+        line-through;
+
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+    ===================================================== */
+
+    .productDescription {
+
+      max-width: 420px;
+
+      margin:
+        19px 0 0;
+
+      font-size: 12px;
+
+      line-height: 1.75;
+
+      opacity: .63;
+
+    }
+
+
+    /* =====================================================
+       OPTION BLOCK
+    ===================================================== */
+
+    .optionBlock {
+
+      margin-top: 25px;
+
+    }
+
+
+    .optionTitle {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      max-width: 350px;
+
+      margin-bottom: 10px;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* =====================================================
+       SIZE
+    ===================================================== */
+
+    .sizeOptions {
+
+      display: flex;
+
+      gap: 6px;
+
+    }
+
 
     .sizeBtn {
-      width: 52px;
-      height: 48px;
-      border: 1px solid #ddd;
-      background: #fff;
+
+      width: 40px;
+
+      height: 38px;
+
+      padding: 0;
+
+      border:
+        1px solid
+        rgba(0,0,0,.15);
+
+      background:
+        transparent;
+
+      cursor: pointer;
+
       font-size: 10px;
-      cursor: pointer;
-      transition: .2s;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease;
+
     }
 
-    .sizeBtn:hover,
+
+    .sizeBtn:hover {
+
+      border-color:
+        rgba(0,0,0,.5);
+
+    }
+
+
     .sizeBtn.active {
+
       background: #111;
+
       color: #fff;
+
       border-color: #111;
+
     }
 
-    .bigAdd {
-      width: 100%;
-      background: #111;
-      color: #fff;
-      padding: 18px;
-      font-size: 9px;
-      letter-spacing: 2px;
+
+    /* =====================================================
+       QUANTITY
+    ===================================================== */
+
+    .quantityControl {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      height: 40px;
+
+      border:
+        1px solid
+        rgba(0,0,0,.15);
+
+    }
+
+
+    .quantityBtn {
+
+      width: 40px;
+
+      height: 100%;
+
+      border: 0;
+
+      background: transparent;
+
       cursor: pointer;
-      transition: .2s;
+
+      font-size: 15px;
+
     }
 
-    .bigAdd:hover {
-      background: #333;
+
+    .quantityBtn:hover {
+
+      background:
+        rgba(0,0,0,.05);
+
     }
 
-    .detailsLines {
-      margin-top: 35px;
-      border-top: 1px solid #eee;
+
+    .quantityValue {
+
+      width: 38px;
+
+      text-align: center;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
     }
 
-    .detailsLines > div {
-      padding: 18px 0;
-      border-bottom: 1px solid #eee;
+
+    /* =====================================================
+       ACTIONS
+    ===================================================== */
+
+    .productActions {
+
+      display: grid;
+
+      max-width: 420px;
+
+      gap: 8px;
+
+      margin-top: 26px;
+
+    }
+
+
+    .primaryProductBtn,
+    .whatsappProductBtn {
+
+      width: 100%;
+
+      min-height: 48px;
+
+      cursor: pointer;
+
       font-size: 9px;
-      letter-spacing: 1.5px;
+
+      font-weight: 700;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+
+      transition:
+        transform .3s ease,
+        opacity .3s ease;
+
     }
 
-    .detailsLines span {
-      float: right;
-      color: #999;
-      letter-spacing: 0;
+
+    .primaryProductBtn {
+
+      border: 0;
+
+      background: #111;
+
+      color: #fff;
+
+    }
+
+
+    .whatsappProductBtn {
+
+      border:
+        1px solid
+        rgba(0,0,0,.15);
+
+      background:
+        transparent;
+
+      color: #111;
+
+    }
+
+
+    .primaryProductBtn:hover,
+    .whatsappProductBtn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =====================================================
+       MINI BAG
+    ===================================================== */
+
+    .miniBag {
+
+      position: fixed;
+
+      top: 18px;
+
+      right: 18px;
+
+      z-index: 9999;
+
+      width: 320px;
+
+      padding: 16px;
+
+      background: #fff;
+
+      color: #111;
+
+      box-shadow:
+        0 24px 65px
+        rgba(0,0,0,.2);
+
+      transform:
+        translateX(
+          calc(100% + 35px)
+        );
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        transform .55s
+        cubic-bezier(.2,.8,.2,1),
+        opacity .35s ease;
+
+    }
+
+
+    .miniBag.show {
+
+      transform:
+        translateX(0);
+
+      opacity: 1;
+
+      pointer-events: auto;
+
+    }
+
+
+    .miniBagHeader {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      padding-bottom: 11px;
+
+      border-bottom:
+        1px solid
+        rgba(0,0,0,.08);
+
+    }
+
+
+    .miniBagTitle {
+
       font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: .15em;
+
     }
 
-    @media(max-width:850px) {
-      .detail {
-        padding: 105px 6% 70px;
-      }
 
-      .detailGrid {
+    .miniBagClose {
+
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      font-size: 17px;
+
+      opacity: .55;
+
+    }
+
+
+    .miniBagBody {
+
+      display: flex;
+
+      gap: 11px;
+
+      padding:
+        14px 0;
+
+    }
+
+
+    .miniBagImage {
+
+      width: 64px;
+
+      height: 78px;
+
+      object-fit: cover;
+
+      background: #eee;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .miniBagInfo h3 {
+
+      margin: 0;
+
+      font-size: 12px;
+
+      line-height: 1.35;
+
+    }
+
+
+    .miniBagInfo p {
+
+      margin:
+        6px 0 0;
+
+      font-size: 10px;
+
+      opacity: .6;
+
+    }
+
+
+    .miniBagActions {
+
+      display: grid;
+
+      gap: 6px;
+
+    }
+
+
+    .miniBagView {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 39px;
+
+      background: #111;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .miniBagContinue {
+
+      min-height: 35px;
+
+      border:
+        1px solid
+        rgba(0,0,0,.12);
+
+      background: transparent;
+
+      cursor: pointer;
+
+      font-size: 8px;
+
+      font-weight: 600;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    /* =====================================================
+       RELATED SECTION
+    ===================================================== */
+
+    .relatedSection {
+
+      max-width: 1120px;
+
+      margin:
+        95px auto 0;
+
+      padding-top: 45px;
+
+      border-top:
+        1px solid
+        rgba(0,0,0,.08);
+
+    }
+
+
+    .relatedHeader {
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content:
+        space-between;
+
+      gap: 25px;
+
+      margin-bottom: 24px;
+
+    }
+
+
+    .relatedHeader .eyebrow {
+
+      margin:
+        0 0 7px;
+
+      font-size: 8px;
+
+      letter-spacing: .15em;
+
+      opacity: .5;
+
+    }
+
+
+    .relatedHeader h2 {
+
+      margin: 0;
+
+      font-size: 25px;
+
+      font-weight: 600;
+
+      letter-spacing: -.02em;
+
+    }
+
+
+    .relatedHeader p {
+
+      max-width: 270px;
+
+      margin: 0;
+
+      font-size: 10px;
+
+      line-height: 1.6;
+
+      opacity: .5;
+
+      text-align: right;
+
+    }
+
+
+    /* =====================================================
+       SMALLER RELATED CARDS
+    ===================================================== */
+
+    .relatedGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+      gap: 17px;
+
+    }
+
+
+    .relatedCard {
+
+      display: block;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      transform:
+        translateY(0);
+
+      transition:
+        transform .35s ease;
+
+    }
+
+
+    .relatedCard:hover {
+
+      transform:
+        translateY(-4px);
+
+    }
+
+
+    .relatedImage {
+
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 4 / 5;
+
+      background: #f1f1f0;
+
+    }
+
+
+    .relatedImage img {
+
+      display: block;
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .6s
+        cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    .relatedCard:hover
+    .relatedImage img {
+
+      transform:
+        scale(1.035);
+
+    }
+
+
+    .relatedInfo {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 8px;
+
+      padding-top: 9px;
+
+    }
+
+
+    .relatedInfo small {
+
+      display: block;
+
+      margin-bottom: 4px;
+
+      font-size: 7px;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+      opacity: .43;
+
+    }
+
+
+    .relatedInfo h3 {
+
+      max-width: 150px;
+
+      margin: 0;
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      line-height: 1.35;
+
+    }
+
+
+    .relatedInfo strong {
+
+      white-space: nowrap;
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+    }
+
+
+    .relatedImage .productBadge {
+
+      top: 9px;
+
+      left: 9px;
+
+      padding:
+        5px 7px;
+
+      font-size: 6px;
+
+    }
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    .productError {
+
+      grid-column:
+        1 / -1;
+
+      padding:
+        100px 20px;
+
+      text-align: center;
+
+    }
+
+
+    .productError h1 {
+
+      margin: 0 0 10px;
+
+      font-size: 28px;
+
+    }
+
+
+    .productError p {
+
+      font-size: 12px;
+
+      opacity: .6;
+
+    }
+
+
+    .productError a {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .1em;
+
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .productDetail {
+
         grid-template-columns: 1fr;
-        gap: 40px;
+
+        max-width: 650px;
+
+        gap: 38px;
+
       }
 
-      .detailInfo {
+
+      .productMainImage {
+
+        max-width: 600px;
+
+      }
+
+
+      .productMainImage img {
+
+        height:
+          min(700px, 100vw);
+
+        min-height: 450px;
+
+      }
+
+
+      .productDetails {
+
+        max-width: 600px;
+
+      }
+
+
+      .relatedSection {
+
+        max-width: 650px;
+
+      }
+
+
+      .relatedGrid {
+
+        grid-template-columns:
+          repeat(3, minmax(0,1fr));
+
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .productPage {
+
+        padding:
+          28px 0 55px;
+
+      }
+
+
+      .backShop {
+
+        margin-bottom: 22px;
+
+      }
+
+
+      .productDetail {
+
+        gap: 28px;
+
+      }
+
+
+      .productMainImage img {
+
+        height:
+          112vw;
+
+        min-height: 0;
+
+      }
+
+
+      .productDetails {
+
         padding-top: 0;
-      }
-    }
 
-    @media(max-width:520px) {
-      .detail {
-        padding: 95px 5% 60px;
       }
 
-      .detailVisual {
-        aspect-ratio: 4 / 5;
+
+      .productDetails h1 {
+
+        font-size: 27px;
+
       }
 
-      .detailInfo h1 {
-        font-size: 44px;
+
+      .productPrice .current {
+
+        font-size: 15px;
+
       }
 
-      .detailsLines span {
-        float: none;
+
+      .relatedSection {
+
+        margin-top: 65px;
+
+        padding-top: 35px;
+
+      }
+
+
+      .relatedHeader {
+
         display: block;
-        margin-top: 6px;
+
       }
+
+
+      .relatedHeader p {
+
+        margin-top: 9px;
+
+        text-align: left;
+
+      }
+
+
+      .relatedGrid {
+
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+
+        gap: 13px;
+
+      }
+
+
+      .relatedInfo h3 {
+
+        font-size: 9px;
+
+      }
+
+
+      .relatedInfo strong {
+
+        font-size: 8px;
+
+      }
+
+
+      .miniBag {
+
+        top: auto;
+
+        right: 9px;
+
+        bottom: 9px;
+
+        left: 9px;
+
+        width: auto;
+
+        transform:
+          translateY(
+            calc(100% + 25px)
+          );
+
+      }
+
+
+      .miniBag.show {
+
+        transform:
+          translateY(0);
+
+      }
+
     }
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+
+      *,
+      *::before,
+      *::after {
+
+        transition: none !important;
+
+        animation: none !important;
+
+      }
+
+    }
+
   </style>
+
 </head>
 
 <body>
 
-<header>
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
+
+  <header>
+
+
+<a href="index.html">
+
+  <img
+    src="assets/rizelle-logo.jpg"
+    alt="RIZELLE"
+  >
+
+</a>
+
+
+<nav id="nav">
 
   <a href="index.html">
-    <img src="assets/rizelle-logo.jpg" alt="RIZELLE">
+    HOME
   </a>
 
-  <nav id="nav">
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="index.html#outlet">FACTORY OUTLET</a>
-    <a href="index.html#story">OUR STORY</a>
-    <a href="index.html#contact">CONTACT</a>
-  </nav>
+  <a href="shop.html">
+    SHOP
+  </a>
 
-  <div class="actions">
-    <a href="orders.html">ORDERS</a>
-    <a href="shop.html">← SHOP</a>
-    <a href="bag.html">
-      BAG <b data-bag-count>0</b>
-    </a>
+  <a href="orders.html">
+    ORDERS
+  </a>
 
-    <button
-      class="menu"
-      onclick="
-        document.getElementById('nav')
+  <a href="bag.html">
+
+    BAG
+    (<span data-bag-count>0</span>)
+
+  </a>
+
+</nav>
+
+
+<div class="actions">
+
+  <button
+    type="button"
+    onclick="location.href='shop.html'"
+    aria-label="Search"
+  >
+    ⌕
+  </button>
+
+
+  <a href="bag.html">
+
+    BAG
+    (<span data-bag-count>0</span>)
+
+  </a>
+
+
+  <button
+    type="button"
+    class="menu"
+    aria-label="Menu"
+    onclick="
+      document
+        .getElementById('nav')
         .classList.toggle('open')
-      "
-    >
-      ☰
-    </button>
+    "
+  >
+    ☰
+  </button>
+
+</div>
+```
+
+  </header>
+
+  <!-- =====================================================
+       PRODUCT PAGE
+  ===================================================== -->
+
+  <main class="productPage">
+
+```
+<a
+  href="shop.html"
+  class="backShop"
+>
+  ← Back to Shop
+</a>
+
+
+<section
+  id="productContainer"
+  class="productDetail"
+></section>
+
+
+
+<!-- =================================================
+     RELATED PRODUCTS
+================================================= -->
+
+<section
+  id="relatedSection"
+  class="relatedSection"
+  style="display:none;"
+>
+
+  <div class="relatedHeader">
+
+    <div>
+
+      <p class="eyebrow">
+        RIZELLE SELECTION
+      </p>
+
+      <h2>
+        You May Also Like
+      </h2>
+
+    </div>
+
+
+    <p>
+      More pieces from the same
+      RIZELLE collection.
+    </p>
+
   </div>
 
-</header>
+
+  <div
+    id="relatedGrid"
+    class="relatedGrid"
+  ></div>
+
+</section>
+```
+
+  </main>
+
+  <!-- =====================================================
+       MINI BAG
+  ===================================================== -->
+
+  <aside
+    id="miniBag"
+    class="miniBag"
+    aria-live="polite"
+  >
+
+```
+<div class="miniBagHeader">
+
+  <span class="miniBagTitle">
+    ✓ ADDED TO BAG
+  </span>
 
 
-<main id="detail" class="detail"></main>
+  <button
+    id="miniBagClose"
+    class="miniBagClose"
+    type="button"
+  >
+    ×
+  </button>
 
-<div id="toast"></div>
+</div>
 
 
-<script src="products.js"></script>
+<div class="miniBagBody">
 
-<script>
+  <img
+    id="miniBagImage"
+    class="miniBagImage"
+    src=""
+    alt=""
+  >
 
-  let selectedSize = "M";
 
-  function addSelectedToBag(id) {
+  <div class="miniBagInfo">
 
-    const p =
-      PRODUCTS.find(x => x.id === id);
+    <h3
+      id="miniBagName"
+    ></h3>
 
-    if (!p) return;
 
-    let bag = getBag();
+    <p
+      id="miniBagPrice"
+    ></p>
 
-    const item =
-      bag.find(
-        x =>
-          x.id === id &&
-          x.size === selectedSize
+
+    <p
+      id="miniBagQuantity"
+    ></p>
+
+  </div>
+
+</div>
+
+
+<div class="miniBagActions">
+
+  <a
+    href="bag.html"
+    class="miniBagView"
+  >
+    VIEW BAG
+  </a>
+
+
+  <button
+    id="miniBagContinue"
+    class="miniBagContinue"
+    type="button"
+  >
+    CONTINUE SHOPPING
+  </button>
+
+</div>
+```
+
+  </aside>
+
+  <!-- =====================================================
+       PRODUCTS
+  ===================================================== -->
+
+  <script src="products.js"></script>
+
+  <script>
+
+    /* =====================================================
+       GET PRODUCT
+    ===================================================== */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
       );
 
-    if (item) {
 
-      item.qty++;
+    const productId =
+      params.get('id');
 
-    } else {
 
-      bag.push({
-        id: id,
-        qty: 1,
-        size: selectedSize
-      });
+    const product =
+      PRODUCTS.find(
+        item =>
+          item.id === productId
+      );
+
+
+    const container =
+      document.getElementById(
+        'productContainer'
+      );
+
+
+    const relatedSection =
+      document.getElementById(
+        'relatedSection'
+      );
+
+
+    const relatedGrid =
+      document.getElementById(
+        'relatedGrid'
+      );
+
+
+    /* =====================================================
+       MONEY
+    ===================================================== */
+
+    function money(value) {
+
+      return (
+        'LKR ' +
+        Number(value)
+          .toLocaleString('en-LK')
+      );
 
     }
 
-    saveBag(bag);
 
-    toast(
-      p.name +
-      " — Size " +
-      selectedSize +
-      " added to bag."
-    );
-  }
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    if (!product) {
+
+      container.innerHTML = `
+
+        <div class="productError">
+
+          <h1>
+            Product not found
+          </h1>
+
+          <p>
+            This RIZELLE product
+            could not be found.
+          </p>
+
+          <a href="shop.html">
+            ← Back to Shop
+          </a>
+
+        </div>
+
+      `;
+
+    }
 
 
-  const id =
-    new URLSearchParams(location.search)
-    .get("id") || "rz-001";
+    /* =====================================================
+       RENDER PRODUCT
+    ===================================================== */
+
+    if (product) {
+
+      document.title =
+        'RIZELLE — ' +
+        product.name;
 
 
-  const p =
-    PRODUCTS.find(x => x.id === id)
-    || PRODUCTS[0];
+      container.innerHTML = `
 
-
-  document.title =
-    p.name + " — RIZELLE";
-
-
-  document.getElementById("detail")
-    .innerHTML = `
-
-      <a class="back" href="shop.html">
-        ← BACK TO SHOP
-      </a>
-
-      <div class="detailGrid">
-
-        <div
-          class="detailVisual"
-          style="
-            background-image:
-            url('${p.image}');
-          "
-        >
+        <div class="productMainImage">
 
           ${
-            p.badge
+            product.badge
               ? `
-                <b class="badge">
-                  ${p.badge}
-                </b>
+                <span
+                  class="productBadge"
+                >
+                  ${product.badge}
+                </span>
               `
-              : ""
+              : ''
           }
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+          >
 
         </div>
 
 
-        <div class="detailInfo">
 
-          <small>
-            ${p.category} / ${p.color}
-          </small>
+        <div class="productDetails">
+
+
+          <span class="productCategory">
+
+            ${product.category}
+            ·
+            ${product.color}
+
+          </span>
 
 
           <h1>
-            ${p.name}
+            ${product.name}
           </h1>
 
 
-          <div class="price">
+          <p class="productColor">
 
-            ${money(p.price)}
+            Color:
+            <strong>
+              ${product.color}
+            </strong>
+
+          </p>
+
+
+          <div class="productPrice">
+
+            <span class="current">
+
+              ${money(
+                product.price
+              )}
+
+            </span>
+
 
             ${
-              p.oldPrice
+              product.oldPrice
                 ? `
-                  <del>
-                    ${money(p.oldPrice)}
-                  </del>
+                  <span class="old">
+
+                    ${money(
+                      product.oldPrice
+                    )}
+
+                  </span>
                 `
-                : ""
+                : ''
             }
 
           </div>
 
 
-          <p>
-            ${p.desc}
+          <p
+            class="productDescription"
+          >
+
+            ${product.desc}
+
           </p>
 
 
-          <div class="sizeTitle">
-            SELECT SIZE
+
+          <!-- SIZE -->
+
+          <div class="optionBlock">
+
+            <div class="optionTitle">
+
+              <span>
+                Select Size
+              </span>
+
+              <span
+                id="selectedSize"
+              >
+                M
+              </span>
+
+            </div>
+
+
+            <div class="sizeOptions">
+
+              <button
+                class="sizeBtn"
+                data-size="S"
+                type="button"
+              >
+                S
+              </button>
+
+
+              <button
+                class="sizeBtn active"
+                data-size="M"
+                type="button"
+              >
+                M
+              </button>
+
+
+              <button
+                class="sizeBtn"
+                data-size="L"
+                type="button"
+              >
+                L
+              </button>
+
+
+              <button
+                class="sizeBtn"
+                data-size="XL"
+                type="button"
+              >
+                XL
+              </button>
+
+            </div>
+
           </div>
 
 
-          <div class="sizes">
 
-            ${["S","M","L","XL"].map(
-              s => `
-                <button
-                  class="sizeBtn
-                    ${s === selectedSize
-                      ? "active"
-                      : ""}"
-                  onclick="
-                    selectSize('${s}');
-                    return false;
-                  "
-                >
-                  ${s}
-                </button>
-              `
-            ).join("")}
+          <!-- QUANTITY -->
 
-          </div>
+          <div class="optionBlock">
 
+            <div class="optionTitle">
 
-          <button
-            class="bigAdd"
-            onclick="
-              addSelectedToBag('${p.id}')
-            "
-          >
-            ADD TO BAG — ${money(p.price)}
-          </button>
-
-
-          <div class="detailsLines">
-
-            <div>
-              FREE DELIVERY
               <span>
-                Orders over LKR 15,000
+                Quantity
               </span>
+
             </div>
 
-            <div>
-              STORE PICKUP
-              <span>
-                Available at Factory Outlet
-              </span>
-            </div>
 
-            <div>
-              RIZELLE QUALITY
-              <span>
-                Carefully selected materials
+            <div
+              class="quantityControl"
+            >
+
+              <button
+                type="button"
+                id="quantityMinus"
+                class="quantityBtn"
+              >
+                −
+              </button>
+
+
+              <span
+                id="quantityValue"
+                class="quantityValue"
+              >
+                1
               </span>
+
+
+              <button
+                type="button"
+                id="quantityPlus"
+                class="quantityBtn"
+              >
+                +
+              </button>
+
             </div>
 
           </div>
+
+
+
+          <!-- ACTIONS -->
+
+          <div class="productActions">
+
+            <button
+              type="button"
+              id="addProductBtn"
+              class="primaryProductBtn"
+            >
+              ADD TO BAG +
+            </button>
+
+
+            <button
+              type="button"
+              id="whatsappBtn"
+              class="whatsappProductBtn"
+            >
+              ORDER VIA WHATSAPP
+            </button>
+
+          </div>
+
 
         </div>
 
-      </div>
-    `;
+      `;
 
 
-  function selectSize(size) {
+      /* =================================================
+         SIZE
+      ================================================= */
 
-    selectedSize = size;
+      let selectedSize = 'M';
 
-    document
-      .querySelectorAll(".sizeBtn")
-      .forEach(btn => {
 
-        btn.classList.toggle(
-          "active",
-          btn.textContent.trim() === size
+      const sizeButtons =
+        document.querySelectorAll(
+          '.sizeBtn'
         );
 
-      });
 
-  }
+      const selectedSizeText =
+        document.getElementById(
+          'selectedSize'
+        );
 
 
-  updateBagCount();
+      sizeButtons.forEach(
+        button => {
 
-</script>
+          button.addEventListener(
+            'click',
+            () => {
+
+              sizeButtons.forEach(
+                item =>
+                  item.classList.remove(
+                    'active'
+                  )
+              );
+
+
+              button.classList.add(
+                'active'
+              );
+
+
+              selectedSize =
+                button.dataset.size;
+
+
+              selectedSizeText.textContent =
+                selectedSize;
+
+            }
+          );
+
+        }
+      );
+
+
+
+      /* =================================================
+         QUANTITY
+      ================================================= */
+
+      let quantity = 1;
+
+
+      const quantityValue =
+        document.getElementById(
+          'quantityValue'
+        );
+
+
+      document
+        .getElementById(
+          'quantityMinus'
+        )
+        .addEventListener(
+          'click',
+          () => {
+
+            quantity =
+              Math.max(
+                1,
+                quantity - 1
+              );
+
+            quantityValue.textContent =
+              quantity;
+
+          }
+        );
+
+
+      document
+        .getElementById(
+          'quantityPlus'
+        )
+        .addEventListener(
+          'click',
+          () => {
+
+            quantity =
+              Math.min(
+                99,
+                quantity + 1
+              );
+
+            quantityValue.textContent =
+              quantity;
+
+          }
+        );
+
+
+
+      /* =================================================
+         ADD TO BAG
+      ================================================= */
+
+      document
+        .getElementById(
+          'addProductBtn'
+        )
+        .addEventListener(
+          'click',
+          () => {
+
+
+            let bag = [];
+
+
+            try {
+
+              bag =
+                JSON.parse(
+                  localStorage.getItem(
+                    'rizelleBag'
+                  ) || '[]'
+                );
+
+            } catch (e) {
+
+              bag = [];
+
+            }
+
+
+            const existing =
+              bag.find(
+                item =>
+                  item.id ===
+                  product.id
+              );
+
+
+            if (existing) {
+
+              existing.qty +=
+                quantity;
+
+            } else {
+
+              bag.push({
+
+                id:
+                  product.id,
+
+                qty:
+                  quantity,
+
+                size:
+                  selectedSize
+
+              });
+
+            }
+
+
+            localStorage.setItem(
+              'rizelleBag',
+              JSON.stringify(bag)
+            );
+
+
+            if (
+              typeof updateBagCount ===
+              'function'
+            ) {
+
+              updateBagCount();
+
+            }
+
+
+            showMiniBag(
+              product,
+              quantity
+            );
+
+          }
+        );
+
+
+
+      /* =================================================
+         WHATSAPP
+      ================================================= */
+
+      document
+        .getElementById(
+          'whatsappBtn'
+        )
+        .addEventListener(
+          'click',
+          () => {
+
+
+            const phone =
+              '94760256550';
+
+
+            const message =
+
+              `Hello RIZELLE,
+
+I would like to order:
+
+Product: ${product.name}
+Category: ${product.category}
+Color: ${product.color}
+Size: ${selectedSize}
+Quantity: ${quantity}
+Price: ${money(
+  product.price
+)}
+
+Thank you.`;
+
+
+            window.open(
+
+              'https://wa.me/' +
+              phone +
+              '?text=' +
+              encodeURIComponent(
+                message
+              ),
+
+              '_blank'
+
+            );
+
+          }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       MINI BAG
+    ===================================================== */
+
+    const miniBag =
+      document.getElementById(
+        'miniBag'
+      );
+
+
+    const miniBagImage =
+      document.getElementById(
+        'miniBagImage'
+      );
+
+
+    const miniBagName =
+      document.getElementById(
+        'miniBagName'
+      );
+
+
+    const miniBagPrice =
+      document.getElementById(
+        'miniBagPrice'
+      );
+
+
+    const miniBagQuantity =
+      document.getElementById(
+        'miniBagQuantity'
+      );
+
+
+    let miniBagTimer;
+
+
+    function showMiniBag(
+      item,
+      qty
+    ) {
+
+
+      miniBagImage.src =
+        item.image;
+
+
+      miniBagImage.alt =
+        item.name;
+
+
+      miniBagName.textContent =
+        item.name;
+
+
+      miniBagPrice.textContent =
+        money(
+          item.price
+        );
+
+
+      miniBagQuantity.textContent =
+        'Quantity: ' +
+        qty;
+
+
+      miniBag.classList.add(
+        'show'
+      );
+
+
+      clearTimeout(
+        miniBagTimer
+      );
+
+
+      miniBagTimer =
+        setTimeout(
+          () => {
+
+            miniBag.classList.remove(
+              'show'
+            );
+
+          },
+          5000
+        );
+
+    }
+
+
+    document
+      .getElementById(
+        'miniBagClose'
+      )
+      .addEventListener(
+        'click',
+        () => {
+
+          miniBag.classList.remove(
+            'show'
+          );
+
+          clearTimeout(
+            miniBagTimer
+          );
+
+        }
+      );
+
+
+    document
+      .getElementById(
+        'miniBagContinue'
+      )
+      .addEventListener(
+        'click',
+        () => {
+
+          miniBag.classList.remove(
+            'show'
+          );
+
+          clearTimeout(
+            miniBagTimer
+          );
+
+        }
+      );
+
+
+
+    /* =====================================================
+       RELATED PRODUCTS
+    ===================================================== */
+
+    if (product) {
+
+
+      const relatedProducts =
+
+        PRODUCTS
+
+          .filter(
+            item =>
+
+              item.category ===
+                product.category
+
+              &&
+
+              item.id !==
+                product.id
+
+          )
+
+          .slice(0, 6);
+
+
+      if (
+        relatedProducts.length
+      ) {
+
+
+        relatedSection.style.display =
+          'block';
+
+
+        relatedGrid.innerHTML =
+
+          relatedProducts
+
+            .map(
+              item => `
+
+                <a
+                  href="product.html?id=${item.id}"
+                  class="relatedCard"
+                >
+
+                  <div
+                    class="relatedImage"
+                  >
+
+                    ${
+                      item.badge
+                        ? `
+                          <span
+                            class="productBadge"
+                          >
+                            ${item.badge}
+                          </span>
+                        `
+                        : ''
+                    }
+
+
+                    <img
+                      src="${item.image}"
+                      alt="${item.name}"
+                      loading="lazy"
+                    >
+
+                  </div>
+
+
+                  <div
+                    class="relatedInfo"
+                  >
+
+                    <div>
+
+                      <small>
+
+                        ${item.category}
+                        ·
+                        ${item.color}
+
+                      </small>
+
+
+                      <h3>
+                        ${item.name}
+                      </h3>
+
+                    </div>
+
+
+                    <strong>
+
+                      ${money(
+                        item.price
+                      )}
+
+                    </strong>
+
+                  </div>
+
+                </a>
+
+              `
+            )
+
+            .join('');
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       BAG COUNT
+    ===================================================== */
+
+    if (
+      typeof updateBagCount ===
+      'function'
+    ) {
+
+      updateBagCount();
+
+    }
+
+  </script>
 
 </body>
+
 </html>
