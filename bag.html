@@ -1,16 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  >
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-  <title>Bag — RIZELLE</title>
+>
+
+  <title>RIZELLE — Your Bag</title>
 
   <link
     rel="stylesheet"
@@ -24,196 +26,409 @@
 
   <style>
 
+    /* =====================================================
+       BAG PAGE
+    ===================================================== */
+
     .bagPage {
-      padding: 135px 6.5% 100px;
-      max-width: 1350px;
-      margin: auto;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 45px 25px 90px;
     }
 
-    .bagHero {
-      margin-bottom: 50px;
+
+    .bagIntro {
+      margin-bottom: 45px;
     }
 
-    .bagHero small {
-      font-size: 9px;
-      letter-spacing: 3px;
-      color: #888;
+
+    .bagIntro small {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      opacity: .45;
     }
 
-    .bagHero h1 {
-      font: 500 clamp(48px,6vw,80px)/.95
-        'Playfair Display', serif;
-      letter-spacing: -3px;
-      margin: 18px 0 0;
+
+    .bagIntro h1 {
+      margin: 0;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: .95;
     }
+
+
+    .bagIntro h1 i {
+      font-weight: 400;
+    }
+
+
+    /* =====================================================
+       BAG LAYOUT
+    ===================================================== */
 
     .bagLayout {
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: minmax(0, 1fr) 310px;
       gap: 60px;
       align-items: start;
     }
 
+
     .bagList {
-      border-top: 1px solid #ddd;
+      border-top: 1px solid rgba(0,0,0,.12);
     }
+
+
+    /* =====================================================
+       BAG ITEM
+    ===================================================== */
 
     .bagItem {
       display: grid;
-      grid-template-columns: 130px 1fr auto auto auto;
-      gap: 22px;
+      grid-template-columns:
+        120px
+        minmax(150px, 1fr)
+        auto
+        auto
+        auto;
+
+      gap: 20px;
+
       align-items: center;
+
       padding: 20px 0;
-      border-bottom: 1px solid #eee;
+
+      border-bottom:
+        1px solid
+        rgba(0,0,0,.08);
     }
+
 
     .bagThumb {
-      width: 130px;
-      aspect-ratio: 4 / 5;
-      background-size: cover;
-      background-position: center;
-      background-color: #eee;
+      width: 120px;
+      height: 150px;
+      display: block;
+      overflow: hidden;
+      background: #eeeeeb;
+      text-decoration: none;
     }
 
-    .bagProduct small {
-      color: #999;
-      font-size: 8px;
-      letter-spacing: 1.5px;
+
+    .bagThumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    .bagItemInfo small {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .13em;
       text-transform: uppercase;
+      opacity: .42;
     }
 
-    .bagProduct h3 {
-      font-size: 14px;
-      font-weight: 500;
-      margin: 8px 0;
-    }
 
-    .bagProduct p {
-      color: #777;
-      font-size: 11px;
+    .bagItemInfo h3 {
       margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
     }
+
+
+    .bagItemInfo p {
+      margin: 8px 0 0;
+      font-size: 9px;
+      opacity: .5;
+    }
+
+
+    .bagItemPrice {
+      margin-top: 12px !important;
+      font-size: 10px !important;
+      font-weight: 700;
+      opacity: .9 !important;
+    }
+
+
+    /* =====================================================
+       QUANTITY
+    ===================================================== */
 
     .qty {
       display: flex;
       align-items: center;
-      border: 1px solid #ddd;
+      height: 34px;
+      border: 1px solid rgba(0,0,0,.13);
     }
+
 
     .qty button {
-      width: 34px;
-      height: 34px;
-      font-size: 16px;
+      width: 32px;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 14px;
     }
 
+
     .qty button:hover {
-      background: #111;
-      color: #fff;
+      background: rgba(0,0,0,.05);
     }
+
 
     .qty b {
       width: 30px;
       text-align: center;
-      font-size: 10px;
-      font-weight: 500;
+      font-size: 9px;
     }
+
 
     .itemTotal {
-      font-size: 11px;
-      white-space: nowrap;
+      min-width: 80px;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: right;
     }
 
-    .removeItem {
-      width: 30px;
-      height: 30px;
-      color: #888;
+
+    .removeBtn {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
       font-size: 18px;
+      font-weight: 300;
+      opacity: .4;
     }
 
-    .removeItem:hover {
-      color: #111;
+
+    .removeBtn:hover {
+      opacity: 1;
     }
+
+
+    /* =====================================================
+       SUMMARY
+    ===================================================== */
 
     .summary {
-      border: 1px solid #ddd;
-      padding: 28px;
       position: sticky;
-      top: 105px;
+      top: 25px;
+      padding: 25px;
+      background: #f3f3f0;
     }
 
-    .summaryTitle {
-      font-size: 9px;
-      letter-spacing: 2px;
-      margin-bottom: 25px;
+
+    .summaryLabel {
+      margin: 0 0 18px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      opacity: .45;
     }
+
 
     .summaryRow {
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
       font-size: 10px;
-      padding: 13px 0;
-      border-bottom: 1px solid #eee;
     }
 
+
     .summaryRow span {
-      color: #777;
+      opacity: .55;
     }
+
+
+    .summaryRow strong {
+      font-weight: 600;
+    }
+
+
+    .summaryLine {
+      width: 100%;
+      height: 1px;
+      margin: 12px 0;
+      background: rgba(0,0,0,.1);
+    }
+
 
     .summaryTotal {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding: 22px 0;
-      font-size: 13px;
+      padding: 8px 0 20px;
     }
+
+
+    .summaryTotal span {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    .summaryTotal strong {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
 
     .checkoutBtn {
-      display: block;
       width: 100%;
+      min-height: 50px;
+      border: 0;
       background: #111;
       color: #fff;
-      text-align: center;
-      padding: 17px;
-      font-size: 9px;
-      letter-spacing: 2px;
-      transition: .2s;
+      cursor: pointer;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition:
+        transform .25s ease,
+        opacity .25s ease;
     }
+
 
     .checkoutBtn:hover {
-      background: #333;
+      transform: translateY(-2px);
+      opacity: .9;
     }
+
+
+    .continueBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin-top: 8px;
+      border: 1px solid rgba(0,0,0,.12);
+      color: #111;
+      text-decoration: none;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+
+    /* =====================================================
+       EMPTY BAG
+    ===================================================== */
 
     .emptyBag {
+      padding: 100px 20px;
+      border-top: 1px solid rgba(0,0,0,.1);
       text-align: center;
-      padding: 90px 20px;
-      border-top: 1px solid #eee;
     }
+
+
+    .emptyBagSymbol {
+      margin-bottom: 18px;
+      font-size: 28px;
+      opacity: .3;
+    }
+
 
     .emptyBag h2 {
-      font: 500 42px 'Playfair Display', serif;
-      margin: 0 0 15px;
+      margin: 0;
+      font-size: 25px;
+      font-weight: 500;
+      letter-spacing: -.02em;
     }
+
 
     .emptyBag p {
-      color: #888;
-      font-size: 12px;
-      margin-bottom: 30px;
+      max-width: 350px;
+      margin: 12px auto 25px;
+      font-size: 10px;
+      line-height: 1.7;
+      opacity: .5;
     }
 
-    .emptyBtn {
-      display: inline-block;
+
+    .emptyBag a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 24px;
       background: #111;
       color: #fff;
-      padding: 15px 22px;
-      font-size: 9px;
-      letter-spacing: 2px;
+      text-decoration: none;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .13em;
     }
 
-    @media(max-width:950px) {
+
+    /* =====================================================
+       BAG FOOTER INFO
+    ===================================================== */
+
+    .bagInfo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 55px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+
+
+    .bagInfoItem {
+      padding: 10px;
+      text-align: center;
+    }
+
+
+    .bagInfoItem strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 8px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    .bagInfoItem span {
+      display: block;
+      font-size: 8px;
+      line-height: 1.6;
+      opacity: .45;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
 
       .bagLayout {
         grid-template-columns: 1fr;
         gap: 35px;
       }
+
 
       .summary {
         position: static;
@@ -221,38 +436,60 @@
 
     }
 
-    @media(max-width:650px) {
+
+    @media (max-width: 650px) {
 
       .bagPage {
-        padding: 105px 5% 70px;
+        padding:
+          35px 15px 60px;
       }
 
+
       .bagItem {
-        grid-template-columns: 85px 1fr auto;
-        gap: 14px;
+        grid-template-columns:
+          85px
+          minmax(0,1fr);
+
+        gap: 13px;
       }
+
 
       .bagThumb {
         width: 85px;
+        height: 110px;
       }
+
+
+      .bagItemInfo h3 {
+        font-size: 12px;
+      }
+
 
       .qty {
         grid-column: 2;
         justify-self: start;
       }
 
+
       .itemTotal {
-        grid-column: 3;
-        grid-row: 2;
+        grid-column: 2;
+        text-align: left;
       }
 
-      .removeItem {
-        grid-column: 3;
-        grid-row: 1;
+
+      .removeBtn {
+        position: absolute;
+        right: 0;
       }
 
-      .bagHero h1 {
-        font-size: 52px;
+
+      .bagItem {
+        position: relative;
+      }
+
+
+      .bagInfo {
+        grid-template-columns: 1fr;
       }
 
     }
@@ -261,390 +498,764 @@
 
 </head>
 
-
 <body>
 
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
-<header>
+  <header>
+
+```
+<a href="index.html">
+
+  <img
+    class="rizelleSiteLogo"
+    src="assets/rizelle-logo.jpg"
+    alt="RIZELLE"
+  >
+
+</a>
+
+
+<nav id="nav">
 
   <a href="index.html">
+    HOME
+  </a>
 
-    <img
-      src="assets/rizelle-logo.jpg"
-      alt="RIZELLE"
-    >
+  <a href="shop.html">
+    SHOP
+  </a>
+
+  <a href="index.html#outlet">
+    FACTORY OUTLET
+  </a>
+
+  <a href="index.html#story">
+    OUR STORY
+  </a>
+
+  <a href="index.html#contact">
+    CONTACT
+  </a>
+
+  <a href="orders.html">
+    ORDERS
+  </a>
+
+  <a
+    href="bag.html"
+    class="active"
+  >
+    BAG
+    (<span data-bag-count>0</span>)
+  </a>
+
+</nav>
+
+
+<div class="actions">
+
+
+  <button
+    type="button"
+    onclick="location.href='shop.html'"
+    aria-label="Search"
+  >
+    ⌕
+  </button>
+
+
+  <a href="orders.html">
+    ORDERS
+  </a>
+
+
+  <a href="bag.html">
+
+    BAG
+    (<span data-bag-count>0</span>)
 
   </a>
 
 
-  <nav id="nav">
-
-    <a href="index.html">
-      HOME
-    </a>
-
-    <a href="shop.html">
-      SHOP
-    </a>
-
-    <a href="index.html#outlet">
-      FACTORY OUTLET
-    </a>
-
-    <a href="index.html#story">
-      OUR STORY
-    </a>
-
-    <a href="index.html#contact">
-      CONTACT
-    </a>
-
-  </nav>
-
-
-  <div class="actions">
-
-    <a href="orders.html">
-      ORDERS
-    </a>
-
-    <a href="shop.html">
-      CONTINUE SHOPPING
-    </a>
-
-    <button
-      class="menu"
-      onclick="
-        document.getElementById('nav')
+  <button
+    class="menu"
+    type="button"
+    onclick="
+      document
+        .getElementById('nav')
         .classList.toggle('open')
-      "
-    >
-      ☰
-    </button>
+    "
+    aria-label="Open menu"
+  >
+    ☰
+  </button>
+
+
+</div>
+```
+
+  </header>
+
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
+  <main class="bagPage">
+
+```
+<section class="bagIntro">
+
+  <small>
+    RIZELLE / YOUR BAG
+  </small>
+
+
+  <h1>
+    Your <i>selection.</i>
+  </h1>
+
+</section>
+
+
+
+<section
+  id="bagContent"
+></section>
+
+
+
+<section class="bagInfo">
+
+
+  <div class="bagInfoItem">
+
+    <strong>
+      Curated Quality
+    </strong>
+
+    <span>
+      Carefully selected pieces
+      for your everyday wardrobe.
+    </span>
 
   </div>
 
-</header>
 
+  <div class="bagInfoItem">
 
-<main class="bagPage">
+    <strong>
+      Easy Ordering
+    </strong>
 
-
-  <div class="bagHero">
-
-    <small>
-      RIZELLE / YOUR BAG
-    </small>
-
-    <h1>
-      Your <i>selection.</i>
-    </h1>
+    <span>
+      Continue shopping and complete
+      your order with ease.
+    </span>
 
   </div>
 
 
-  <div id="bagContent"></div>
+  <div class="bagInfoItem">
+
+    <strong>
+      RIZELLE Support
+    </strong>
+
+    <span>
+      Need help?
+      Contact the RIZELLE team.
+    </span>
+
+  </div>
 
 
-</main>
+</section>
+```
+
+  </main>
+
+  <!-- =====================================================
+       PRODUCTS
+  ===================================================== -->
+
+  <script src="products.js"></script>
+
+  <script>
 
 
-<div id="toast"></div>
+    /* =====================================================
+       GET BAG
+    ===================================================== */
 
+    function getBag() {
 
-<script src="products.js"></script>
+      try {
 
+        return JSON.parse(
+          localStorage.getItem(
+            'rizelleBag'
+          ) || '[]'
+        );
 
-<script>
+      } catch (error) {
 
-  function renderBag() {
+        return [];
 
-    const bag = getBag();
-
-    const el =
-      document.getElementById("bagContent");
-
-
-    if (!bag.length) {
-
-      el.innerHTML = `
-
-        <div class="emptyBag">
-
-          <h2>
-            Your bag is empty.
-          </h2>
-
-          <p>
-            Find something that feels like you.
-          </p>
-
-          <a
-            class="emptyBtn"
-            href="shop.html"
-          >
-            EXPLORE COLLECTION ↗
-          </a>
-
-        </div>
-
-      `;
-
-      return;
+      }
 
     }
 
 
-    let total = 0;
 
+    /* =====================================================
+       SAVE BAG
+    ===================================================== */
 
-    const items = bag.map(item => {
+    function saveBag(bag) {
 
-      const p =
-        PRODUCTS.find(x => x.id === item.id);
-
-
-      if (!p) return "";
-
-
-      const subtotal =
-        p.price * item.qty;
-
-
-      total += subtotal;
-
-
-      return `
-
-        <div class="bagItem">
-
-
-          <a
-            class="bagThumb"
-            href="product.html?id=${p.id}"
-            style="
-              background-image:
-              url('${p.image}');
-            "
-          ></a>
-
-
-          <div class="bagProduct">
-
-            <small>
-              ${p.category} · ${p.color}
-            </small>
-
-            <h3>
-              ${p.name}
-            </h3>
-
-            <p>
-              ${money(p.price)}
-              ${
-                item.size
-                  ? ` · Size ${item.size}`
-                  : ""
-              }
-            </p>
-
-          </div>
-
-
-          <div class="qty">
-
-            <button
-              onclick="
-                change(
-                  '${p.id}',
-                  -1,
-                  '${item.size || ""}'
-                )
-              "
-            >
-              −
-            </button>
-
-            <b>
-              ${item.qty}
-            </b>
-
-            <button
-              onclick="
-                change(
-                  '${p.id}',
-                  1,
-                  '${item.size || ""}'
-                )
-              "
-            >
-              +
-            </button>
-
-          </div>
-
-
-          <strong class="itemTotal">
-            ${money(subtotal)}
-          </strong>
-
-
-          <button
-            class="removeItem"
-            onclick="
-              removeItem(
-                '${p.id}',
-                '${item.size || ""}'
-              )
-            "
-          >
-            ×
-          </button>
-
-
-        </div>
-
-      `;
-
-    }).join("");
-
-
-    el.innerHTML = `
-
-      <div class="bagLayout">
-
-        <div class="bagList">
-
-          ${items}
-
-        </div>
-
-
-        <aside class="summary">
-
-          <div class="summaryTitle">
-            ORDER SUMMARY
-          </div>
-
-
-          <div class="summaryRow">
-
-            <span>
-              SUBTOTAL
-            </span>
-
-            <strong>
-              ${money(total)}
-            </strong>
-
-          </div>
-
-
-          <div class="summaryRow">
-
-            <span>
-              DELIVERY
-            </span>
-
-            <span>
-              At checkout
-            </span>
-
-          </div>
-
-
-          <div class="summaryTotal">
-
-            <strong>
-              TOTAL
-            </strong>
-
-            <strong>
-              ${money(total)}
-            </strong>
-
-          </div>
-
-
-          <a
-            class="checkoutBtn"
-            href="checkout.html"
-          >
-            PROCEED TO CHECKOUT →
-          </a>
-
-        </aside>
-
-      </div>
-
-    `;
-
-  }
-
-
-  function change(id, amount, size) {
-
-    let bag = getBag();
-
-
-    const item =
-      bag.find(
-        x =>
-          x.id === id &&
-          (x.size || "") === size
+      localStorage.setItem(
+        'rizelleBag',
+        JSON.stringify(bag)
       );
 
+      updateBagCount();
 
-    if (!item) return;
-
-
-    item.qty += amount;
+    }
 
 
-    if (item.qty <= 0) {
 
-      bag =
-        bag.filter(
-          x =>
-            !(
-              x.id === id &&
-              (x.size || "") === size
-            )
+    /* =====================================================
+       MONEY
+    ===================================================== */
+
+    function money(value) {
+
+      return (
+        'LKR ' +
+        Number(value)
+          .toLocaleString('en-LK')
+      );
+
+    }
+
+
+
+    /* =====================================================
+       BAG COUNT
+    ===================================================== */
+
+    function updateBagCount() {
+
+      const bag =
+        getBag();
+
+
+      const count =
+        bag.reduce(
+          function(total, item) {
+
+            return (
+              total +
+              Number(item.qty || 0)
+            );
+
+          },
+          0
+        );
+
+
+      document
+        .querySelectorAll(
+          '[data-bag-count]'
+        )
+        .forEach(
+          function(element) {
+
+            element.textContent =
+              count;
+
+          }
         );
 
     }
 
 
-    saveBag(bag);
 
-    renderBag();
+    /* =====================================================
+       FIND PRODUCT
+    ===================================================== */
 
-  }
+    function getProduct(id) {
+
+      if (
+        typeof PRODUCTS ===
+        'undefined'
+      ) {
+
+        return null;
+
+      }
 
 
-  function removeItem(id, size) {
+      return PRODUCTS.find(
+        function(product) {
 
-    const bag =
-      getBag().filter(
-        x =>
-          !(
-            x.id === id &&
-            (x.size || "") === size
-          )
+          return (
+            product.id === id
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       CHANGE QUANTITY
+    ===================================================== */
+
+    function changeQuantity(
+      id,
+      amount
+    ) {
+
+      const bag =
+        getBag();
+
+
+      const item =
+        bag.find(
+          function(entry) {
+
+            return (
+              entry.id === id
+            );
+
+          }
+        );
+
+
+      if (!item)
+        return;
+
+
+      item.qty =
+        Number(item.qty || 1) +
+        amount;
+
+
+      if (item.qty <= 0) {
+
+        const newBag =
+          bag.filter(
+            function(entry) {
+
+              return (
+                entry.id !== id
+              );
+
+            }
+          );
+
+
+        saveBag(newBag);
+
+      } else {
+
+        saveBag(bag);
+
+      }
+
+
+      renderBag();
+
+    }
+
+
+
+    /* =====================================================
+       REMOVE ITEM
+    ===================================================== */
+
+    function removeItem(id) {
+
+      const bag =
+        getBag();
+
+
+      const newBag =
+        bag.filter(
+          function(item) {
+
+            return (
+              item.id !== id
+            );
+
+          }
+        );
+
+
+      saveBag(newBag);
+
+      renderBag();
+
+    }
+
+
+
+    /* =====================================================
+       RENDER BAG
+    ===================================================== */
+
+    function renderBag() {
+
+      const container =
+        document.getElementById(
+          'bagContent'
+        );
+
+
+      if (!container)
+        return;
+
+
+      const bag =
+        getBag();
+
+
+      if (!bag.length) {
+
+        container.innerHTML = `
+
+          <div class="emptyBag">
+
+            <div class="emptyBagSymbol">
+              ♡
+            </div>
+
+            <h2>
+              Your bag is empty.
+            </h2>
+
+            <p>
+              Find something that feels
+              like you. Explore the RIZELLE
+              collection and choose your
+              next favorite piece.
+            </p>
+
+            <a href="shop.html">
+              EXPLORE COLLECTION ↗
+            </a>
+
+          </div>
+
+        `;
+
+
+        updateBagCount();
+
+        return;
+
+      }
+
+
+
+      let subtotal = 0;
+
+
+      let html = '';
+
+
+      bag.forEach(
+        function(item) {
+
+
+          const product =
+            getProduct(
+              item.id
+            );
+
+
+          if (!product)
+            return;
+
+
+          const qty =
+            Math.max(
+              1,
+              Number(item.qty || 1)
+            );
+
+
+          const lineTotal =
+            Number(product.price) *
+            qty;
+
+
+          subtotal +=
+            lineTotal;
+
+
+          html += `
+
+            <article
+              class="bagItem"
+            >
+
+
+              <a
+                href="product.html?id=${product.id}"
+                class="bagThumb"
+              >
+
+                <img
+                  src="${product.image}"
+                  alt="${product.name}"
+                >
+
+              </a>
+
+
+              <div
+                class="bagItemInfo"
+              >
+
+                <small>
+                  ${product.category}
+                </small>
+
+
+                <h3>
+                  ${product.name}
+                </h3>
+
+
+                <p>
+                  ${product.color || ''}
+                </p>
+
+
+                <p
+                  class="bagItemPrice"
+                >
+                  ${money(product.price)}
+                </p>
+
+              </div>
+
+
+              <div
+                class="qty"
+              >
+
+                <button
+                  type="button"
+                  onclick="
+                    changeQuantity(
+                      '${product.id}',
+                      -1
+                    )
+                  "
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+
+
+                <b>
+                  ${qty}
+                </b>
+
+
+                <button
+                  type="button"
+                  onclick="
+                    changeQuantity(
+                      '${product.id}',
+                      1
+                    )
+                  "
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+
+              </div>
+
+
+              <strong
+                class="itemTotal"
+              >
+                ${money(lineTotal)}
+              </strong>
+
+
+              <button
+                type="button"
+                class="removeBtn"
+                onclick="
+                  removeItem(
+                    '${product.id}'
+                  )
+                "
+                aria-label="Remove product"
+              >
+                ×
+              </button>
+
+
+            </article>
+
+          `;
+
+        }
       );
 
 
-    saveBag(bag);
+
+      /* ===================================================
+         SUMMARY
+      =================================================== */
+
+      const delivery =
+        subtotal >= 15000
+          ? 0
+          : 500;
+
+
+      const total =
+        subtotal +
+        delivery;
+
+
+
+      container.innerHTML = `
+
+        <div class="bagLayout">
+
+
+          <div class="bagList">
+
+            ${html}
+
+          </div>
+
+
+          <aside
+            class="summary"
+          >
+
+            <p
+              class="summaryLabel"
+            >
+              RIZELLE / ORDER SUMMARY
+            </p>
+
+
+            <div
+              class="summaryRow"
+            >
+
+              <span>
+                Subtotal
+              </span>
+
+              <strong>
+                ${money(subtotal)}
+              </strong>
+
+            </div>
+
+
+            <div
+              class="summaryRow"
+            >
+
+              <span>
+                Delivery
+              </span>
+
+              <strong>
+
+                ${
+                  delivery === 0
+                    ? 'FREE'
+                    : money(delivery)
+                }
+
+              </strong>
+
+            </div>
+
+
+            <div
+              class="summaryLine"
+            ></div>
+
+
+            <div
+              class="summaryTotal"
+            >
+
+              <span>
+                Total
+              </span>
+
+              <strong>
+                ${money(total)}
+              </strong>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="checkoutBtn"
+              onclick="
+                location.href='checkout.html'
+              "
+            >
+              PROCEED TO CHECKOUT →
+            </button>
+
+
+            <a
+              href="shop.html"
+              class="continueBtn"
+            >
+              CONTINUE SHOPPING
+            </a>
+
+          </aside>
+
+
+        </div>
+
+      `;
+
+
+      updateBagCount();
+
+    }
+
+
+
+    /* =====================================================
+       START
+    ===================================================== */
 
     renderBag();
 
-  }
+    updateBagCount();
 
 
-  renderBag();
-
-</script>
-
+  </script>
 
 </body>
+
 </html>
