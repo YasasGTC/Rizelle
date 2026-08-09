@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
 
   <title>RIZELLE — Shop</title>
 
@@ -22,243 +24,696 @@
     href="shop.css"
   >
 
-</head>
+  <style>
 
+    /* ==========================================
+       SHOP HEADER
+       Keep homepage sizing, adjust only position
+    ========================================== */
 
-<body>
+    header {
+      position: relative;
+      z-index: 1000;
+    }
 
 
-<header class="siteHeader">
+    /*
+      Keep the original logo dimensions from
+      style.css / homepage.
+      Only move it slightly toward the left.
+    */
 
-  <a
-    href="index.html"
-    class="brand"
-  >
-    RIZELLE
-  </a>
+    header > a:first-child {
+      position: relative;
 
+      left: -8px;
+    }
 
-  <nav>
 
-    <a href="index.html">
-      HOME
-    </a>
+    /* ==========================================
+       SHOP CONTENT
+    ========================================== */
 
-    <a href="shop.html" class="active">
-      SHOP
-    </a>
+    .shopPage {
 
-    <a href="orders.html">
-      ORDERS
-    </a>
+      position: relative;
 
-    <a href="bag.html">
+      z-index: 1;
 
-      BAG
-      (<span data-bag-count>0</span>)
+      width: 100%;
 
-    </a>
-
-  </nav>
-
-</header>
-
-
-
-<main class="shopPage">
-
-
-  <section class="shopHero">
-
-    <div>
-
-      <p class="eyebrow">
-        RIZELLE COLLECTION
-      </p>
-
-      <h1>
-        Shop
-      </h1>
-
-      <p class="shopIntro">
-        Everyday essentials,
-        refined for your style.
-      </p>
-
-    </div>
-
-
-    <div class="shopTools">
-
-      <button
-        class="filterBtn active"
-        data-filter="All"
-      >
-        ALL
-      </button>
-
-      <button
-        class="filterBtn"
-        data-filter="Men"
-      >
-        MEN
-      </button>
-
-      <button
-        class="filterBtn"
-        data-filter="Women"
-      >
-        WOMEN
-      </button>
-
-      <button
-        class="filterBtn"
-        data-filter="Kids"
-      >
-        KIDS
-      </button>
-
-      <button
-        class="filterBtn"
-        data-filter="Accessories"
-      >
-        ACCESSORIES
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <section>
-
-    <div
-      id="productGrid"
-      class="productGrid"
-    ></div>
-
-  </section>
-
-
-</main>
-
-
-
-<div id="toast"></div>
-
-
-
-<script src="products.js"></script>
-
-
-<script>
-
-
-  const grid =
-    document.getElementById(
-      'productGrid'
-    );
-
-
-  const filterButtons =
-    document.querySelectorAll(
-      '.filterBtn'
-    );
-
-
-  let currentFilter = 'All';
-
-
-
-  function renderProducts() {
-
-
-    const products =
-      currentFilter === 'All'
-
-        ? PRODUCTS
-
-        : PRODUCTS.filter(
-            p =>
-              p.category ===
-              currentFilter
-          );
-
-
-    if (!products.length) {
-
-      grid.innerHTML = `
-
-        <div class="noProducts">
-
-          <h2>
-            No products found
-          </h2>
-
-          <p>
-            Try another category.
-          </p>
-
-        </div>
-
-      `;
-
-      return;
+      padding-top: 55px;
 
     }
 
 
-    grid.innerHTML =
-      products
-        .map(card)
-        .join('');
+    /* ==========================================
+       SHOP HERO
+    ========================================== */
 
-  }
+    .shopHero {
+
+      position: relative;
+
+      z-index: 2;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 40px;
+
+      width: 100%;
+
+      padding:
+        0 0 42px;
+
+    }
+
+
+    .shopHero > div:first-child {
+
+      position: relative;
+
+      z-index: 3;
+
+    }
+
+
+    /* COLLECTION */
+
+    .shopHero .eyebrow {
+
+      position: relative;
+
+      z-index: 3;
+
+      display: block;
+
+      margin:
+        0 0 12px;
+
+      line-height: 1.4;
+
+    }
+
+
+    /* TITLE */
+
+    .shopHero h1 {
+
+      position: relative;
+
+      z-index: 3;
+
+      margin: 0;
+
+    }
+
+
+    /* DESCRIPTION */
+
+    .shopIntro {
+
+      position: relative;
+
+      z-index: 3;
+
+      margin-top: 12px;
+
+    }
+
+
+    /* ==========================================
+       FILTERS
+    ========================================== */
+
+    .shopTools {
+
+      position: relative;
+
+      z-index: 10;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+    }
+
+
+    .filterBtn {
+
+      position: relative;
+
+      z-index: 11;
+
+      cursor: pointer;
+
+      transition:
+        transform .3s ease,
+        opacity .3s ease;
+
+    }
+
+
+    .filterBtn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .filterBtn:active {
+
+      transform:
+        scale(.97);
+
+    }
+
+
+    /* ==========================================
+       PRODUCT GRID
+    ========================================== */
+
+    .productGrid {
+
+      position: relative;
+
+      z-index: 1;
+
+      width: 100%;
+
+      padding-bottom: 80px;
+
+    }
+
+
+    /* ==========================================
+       PRODUCT CARD ENTRANCE
+    ========================================== */
+
+    .productGrid .productCard {
+
+      animation:
+        rizelleCardEntrance
+        .65s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+
+    }
+
+
+    @keyframes rizelleCardEntrance {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(18px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+    /* ==========================================
+       MOBILE
+    ========================================== */
+
+    @media (max-width: 760px) {
+
+
+      header > a:first-child {
+
+        left: -4px;
+
+      }
+
+
+      .shopPage {
+
+        padding-top: 32px;
+
+      }
+
+
+      .shopHero {
+
+        display: block;
+
+        padding-bottom: 30px;
+
+      }
+
+
+      .shopTools {
+
+        justify-content: flex-start;
+
+        flex-wrap: nowrap;
+
+        overflow-x: auto;
+
+        margin-top: 24px;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: none;
+
+      }
+
+
+      .shopTools::-webkit-scrollbar {
+
+        display: none;
+
+      }
+
+
+      .filterBtn {
+
+        flex:
+          0 0 auto;
+
+      }
+
+    }
+
+
+    /* ==========================================
+       REDUCED MOTION
+    ========================================== */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+
+      .productCard,
+      .filterBtn {
+
+        animation: none !important;
+
+        transition: none !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ==========================================
+       HEADER
+    ========================================== -->
+
+  <header>
+
+
+<!-- RIZELLE LOGO -->
+
+<a href="index.html">
+
+  <img
+    src="assets/rizelle-logo.jpg"
+    alt="RIZELLE"
+  >
+
+</a>
+
+
+<!-- NAV -->
+
+<nav id="nav">
+
+
+  <a href="index.html">
+    HOME
+  </a>
+
+
+  <a
+    href="shop.html"
+    class="active"
+  >
+    SHOP
+  </a>
+
+
+  <a href="orders.html">
+    ORDERS
+  </a>
+
+
+  <a href="bag.html">
+
+    BAG
+
+    (<span data-bag-count>0</span>)
+
+  </a>
+
+
+</nav>
+
+
+<!-- ACTIONS -->
+
+<div class="actions">
+
+
+  <button
+    type="button"
+    onclick="location.href='shop.html'"
+    aria-label="Search"
+  >
+    ⌕
+  </button>
+
+
+  <a href="bag.html">
+
+    BAG
+
+    (<span data-bag-count>0</span>)
+
+  </a>
+
+
+  <button
+    type="button"
+    class="menu"
+    aria-label="Menu"
+    onclick="
+      document
+        .getElementById('nav')
+        .classList.toggle('open')
+    "
+  >
+    ☰
+  </button>
+
+
+</div>
+
+
+  </header>
+
+  <!-- ==========================================
+       SHOP
+  ========================================== -->
+
+  <main class="shopPage">
+
+
+<section class="shopHero">
+
+
+  <div>
+
+
+    <p class="eyebrow">
+      RIZELLE COLLECTION
+    </p>
+
+
+    <h1>
+      Shop
+    </h1>
+
+
+    <p class="shopIntro">
+      Everyday essentials,
+      refined for your style.
+    </p>
+
+
+  </div>
 
 
 
-  filterButtons.forEach(button => {
+  <!-- FILTERS -->
+
+  <div class="shopTools">
 
 
-    button.addEventListener(
-      'click',
-      () => {
+    <button
+      type="button"
+      class="filterBtn active"
+      data-filter="All"
+    >
+      ALL
+    </button>
 
 
-        filterButtons.forEach(
-          btn =>
-            btn.classList.remove(
+    <button
+      type="button"
+      class="filterBtn"
+      data-filter="Men"
+    >
+      MEN
+    </button>
+
+
+    <button
+      type="button"
+      class="filterBtn"
+      data-filter="Women"
+    >
+      WOMEN
+    </button>
+
+
+    <button
+      type="button"
+      class="filterBtn"
+      data-filter="Kids"
+    >
+      KIDS
+    </button>
+
+
+    <button
+      type="button"
+      class="filterBtn"
+      data-filter="Accessories"
+    >
+      ACCESSORIES
+    </button>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- PRODUCT GRID -->
+
+<section>
+
+  <div
+    id="productGrid"
+    class="productGrid"
+  ></div>
+
+</section>
+```
+
+  </main>
+
+  <!-- TOAST -->
+
+  <div id="toast"></div>
+
+  <!-- PRODUCTS -->
+
+  <script src="products.js"></script>
+
+  <!-- SHOP JS -->
+
+  <script>
+
+
+    /* ==========================================
+       SHOP ENGINE
+    ========================================== */
+
+    const productGrid =
+      document.getElementById(
+        'productGrid'
+      );
+
+
+    const filterButtons =
+      document.querySelectorAll(
+        '.filterBtn'
+      );
+
+
+    let currentFilter =
+      'All';
+
+
+
+    /* ==========================================
+       RENDER
+    ========================================== */
+
+    function renderProducts() {
+
+
+      const filteredProducts =
+
+        currentFilter === 'All'
+
+          ? PRODUCTS
+
+          : PRODUCTS.filter(
+              product =>
+                product.category ===
+                currentFilter
+            );
+
+
+      if (
+        !filteredProducts.length
+      ) {
+
+        productGrid.innerHTML = `
+
+          <div class="noProducts">
+
+            <h2>
+              No products found
+            </h2>
+
+            <p>
+              Try another category.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      productGrid.innerHTML =
+
+        filteredProducts
+          .map(card)
+          .join('');
+
+
+      const cards =
+        productGrid.querySelectorAll(
+          '.productCard'
+        );
+
+
+      cards.forEach(
+        (card, index) => {
+
+          card.style.animationDelay =
+            `${Math.min(
+              index * 0.045,
+              0.5
+            )}s`;
+
+        }
+      );
+
+    }
+
+
+
+    /* ==========================================
+       FILTER
+    ========================================== */
+
+    filterButtons.forEach(
+      button => {
+
+        button.addEventListener(
+          'click',
+          () => {
+
+
+            filterButtons.forEach(
+              item =>
+                item.classList.remove(
+                  'active'
+                )
+            );
+
+
+            button.classList.add(
               'active'
-            )
+            );
+
+
+            currentFilter =
+              button.dataset.filter;
+
+
+            renderProducts();
+
+          }
         );
-
-
-        button.classList.add(
-          'active'
-        );
-
-
-        currentFilter =
-          button.dataset.filter;
-
-
-        renderProducts();
 
       }
     );
 
-  });
+
+
+    /* ==========================================
+       BAG
+    ========================================== */
+
+    if (
+      typeof updateBagCount ===
+      'function'
+    ) {
+
+      updateBagCount();
+
+    }
 
 
 
-  updateBagCount();
+    /* ==========================================
+       INITIAL LOAD
+    ========================================== */
 
-  renderProducts();
+    renderProducts();
 
 
-</script>
-
+  </script>
 
 </body>
 
